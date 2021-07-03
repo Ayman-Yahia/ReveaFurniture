@@ -42,11 +42,11 @@ public class UserController {
         }
         
         userService.saveWithUserRole(user);
-        return "redirect:/login";
+        return "homePage.jsp";
     }
     // ******************************************************************************
     // ******************************************************************************
-    // This method is only commented out when you want to add an admin, and the previous method shall be commented 
+//     //This method is only commented out when you want to add an admin, and the previous method shall be commented 
 //    @PostMapping("/registration")
 //    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
 //        userValidator.validate(user, result);
@@ -59,15 +59,25 @@ public class UserController {
     // ******************************************************************************
     
     @RequestMapping("/login")
+    public String loginpage(@ModelAttribute("user") User user) {
+        System.out.println("11");
+        return "registrationPage.jsp";
+    }
+    
+    @PostMapping("/login")
     public String login(@ModelAttribute("user") User user,@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
         if(error != null) {
+        	System.out.println("noooooo");
             model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
         }
         if(logout != null) {
+        	System.out.println("yessssss");
             model.addAttribute("logoutMessage", "Logout Successful!");
         }
-        return "redirect:/registration";
+        System.out.println("skipppppp");
+        return "redirect:/home";
     }
+    
     
     
     @RequestMapping("/admin")

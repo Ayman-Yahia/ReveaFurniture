@@ -3,8 +3,12 @@ package com.codingdojo.ReveaStoreProject.models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -12,10 +16,14 @@ import javax.persistence.Table;
 @Table(name="roles")
 public class Role {
 	@Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToMany(mappedBy = "roles")
+	@ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "users_roles", 
+        joinColumns = @JoinColumn(name = "role_id"), 
+        inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users;
     
     public Role() {
