@@ -38,7 +38,7 @@ $(document).ready(function(){
 				</label> 
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-				<button class="submit" type="button">Sign In</button>
+				<button class="submit" type="submit">Sign In</button>
 				<p class="forgot-pass">Forgot Password ?</p>
 
 			</div>
@@ -74,7 +74,7 @@ $(document).ready(function(){
 					</label> <label> <span>Confirm Password</span> <form:input
 							type="password" path="passwordConfirmation" />
 					</label>
-					<button type="button" class="submit">Sign Up Now</button>
+					<button type="submit" class="submit">Sign Up Now</button>
 				</div>
 			</div>
 		</form:form>
