@@ -2,8 +2,8 @@ package com.codingdojo.ReveaStoreProject.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import com.codingdojo.ReveaStoreProject.models.Role;
+import com.codingdojo.ReveaStoreProject.models.Order;
 @Repository
-public interface RoleRepository extends CrudRepository<Role, Long> {
+public interface OrderRepository extends CrudRepository<Order, Long>{
 
 }
