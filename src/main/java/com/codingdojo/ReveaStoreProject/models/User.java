@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -26,15 +27,15 @@ import com.sun.istack.NotNull;
 @Table(name="users")
 public class User {
 	@Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	@NotNull
 	@Size(min=2)
-	@NotBlank(message="You can't leave first name field empty!")
+//	@NotBlank(message="You can't leave first name field empty!")
 	private String firstName;
 	@NotNull
 	@Size(min=2)
-	@NotBlank(message="You can't leave first name field empty!")
+//	@NotBlank(message="You can't leave first name field empty!")
 	private String lastName;
 	@NotNull
 	@Email(message="Email must be valid")
