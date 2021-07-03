@@ -38,5 +38,8 @@ public class UserService {
     public User findByEmail(String username) {
         return userRepository.findByEmail(username);
     }
+    public  User findByName(String name) {
+    	return userRepository.findByFirstName(name);
+    }
 
 }

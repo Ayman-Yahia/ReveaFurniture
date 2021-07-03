@@ -58,16 +58,16 @@ public class UserController {
     public String home(Principal principal, Model model) {
         // 1
     	//here i changed the line below so there may be errors .
-        String email = ((User) principal).getEmail();
-        model.addAttribute("currentUser", userService.findByEmail(email));
+    	String name =principal.getName();
+        model.addAttribute("currentUser", userService.findByName(name));
         return "homePage.jsp";
     }
     
     @RequestMapping("/admin")
     public String adminPage(Principal principal, Model model) {
     	//here i changed the line below so there may be errors .
-        String email = ((User) principal).getEmail();
-        model.addAttribute("currentUser", userService.findByEmail(email));
+        String name =principal.getName();
+        model.addAttribute("currentUser", userService.findByName(name));
         return "adminPage.jsp";
     }
 
