@@ -18,7 +18,6 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.sun.istack.NotNull;
@@ -31,11 +30,9 @@ public class User {
     private Long id;
 	@NotNull
 	@Size(min=2)
-//	@NotBlank(message="You can't leave first name field empty!")
 	private String firstName;
 	@NotNull
 	@Size(min=2)
-//	@NotBlank(message="You can't leave first name field empty!")
 	private String lastName;
 	@NotNull
 	@Email(message="Email must be valid")
