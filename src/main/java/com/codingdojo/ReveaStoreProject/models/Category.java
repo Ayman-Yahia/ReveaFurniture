@@ -1,11 +1,14 @@
 package com.codingdojo.ReveaStoreProject.models;
 
 	import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-	import javax.persistence.GeneratedValue;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 	import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -20,6 +23,8 @@ import javax.persistence.Table;
 	    @Column(updatable=false)
 	    private Date createdAt;
 	    private Date updatedAt;
+	    @OneToMany(mappedBy="category", fetch = FetchType.LAZY)
+	    private List<Product> products;
 	    
 	    public Category() {
 	    }
