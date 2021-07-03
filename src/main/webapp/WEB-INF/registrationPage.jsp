@@ -23,7 +23,7 @@
 </style>
 </head>
 <body>
-	<h1>Welcome</h1>
+	<h1>Welcome user</h1>
 	<div class="divs">
 		<h3>Register!</h3>
 
