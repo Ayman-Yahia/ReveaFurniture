@@ -15,33 +15,48 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.codingdojo.ReveaStoreProject.models.User;
 import com.codingdojo.ReveaStoreProject.services.UserService;
+import com.codingdojo.ReveaStoreProject.validator.UserValidator;
 
 @Controller
 public class UserController {
 	private UserService userService;
+	private UserValidator userValidator;
     
-    public UserController(UserService userService) {
+    public UserController(UserService userService,UserValidator userValidator) {
         this.userService = userService;
+        this.userValidator = userValidator;
     }
+    
     @RequestMapping("/registration")
     public String registerForm(@Valid @ModelAttribute("user") User user) {
         return "registrationPage.jsp";
     }
     
+    // ******************************************************************************
+    // This method is only commented when you want to comment out the following method
     @PostMapping("/registration")
-    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
+    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+        userValidator.validate(user, result);
         if (result.hasErrors()) {
             return "registrationPage.jsp";
         }
+        
         userService.saveWithUserRole(user);
         return "redirect:/login";
     }
-    
-    
-    @RequestMapping("/login")
-    public String login() {
-        return "loginPage.jsp";
-    }
+    // ******************************************************************************
+    // ******************************************************************************
+    // This method is only commented out when you want to add an admin, and the previous method shall be commented 
+//    @PostMapping("/registration")
+//    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+//        userValidator.validate(user, result);
+//        if (result.hasErrors()) {
+//            return "registrationPage.jsp";
+//        }
+//        userService.saveUserWithAdminRole(user);
+//        return "redirect:/login";
+//    }
+    // ******************************************************************************
     
     @RequestMapping("/login")
     public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
@@ -54,21 +69,18 @@ public class UserController {
         return "loginPage.jsp";
     }
     
-    @RequestMapping(value = {"/", "/home"})
-    public String home(Principal principal, Model model) {
-        // 1
-    	//here i changed the line below so there may be errors .
-    	String name =principal.getName();
-        model.addAttribute("currentUser", userService.findByName(name));
-        return "homePage.jsp";
-    }
     
     @RequestMapping("/admin")
     public String adminPage(Principal principal, Model model) {
-    	//here i changed the line below so there may be errors .
-        String name =principal.getName();
-        model.addAttribute("currentUser", userService.findByName(name));
+        String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
         return "adminPage.jsp";
+    }    
+    
+    @RequestMapping(value = {"/", "/home"})
+    public String home(Principal principal, Model model) {
+        String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+        return "homePage.jsp";
     }
-
 }

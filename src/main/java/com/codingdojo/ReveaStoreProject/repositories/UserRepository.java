@@ -7,7 +7,5 @@ import com.codingdojo.ReveaStoreProject.models.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
-	User findByEmail(String email);
-	User findByFirstName(String name);
-
+	User findByUsername(String username);
 }

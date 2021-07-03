@@ -38,7 +38,7 @@ public class User {
 	private String lastName;
 	@NotNull
 	@Email(message="Email must be valid")
-	private String email;
+	private String username;
 	@Size(min=8, message="Password must be greater than 8 characters")
 	private String first_name;
 	private String last_name;
@@ -90,15 +90,15 @@ public class User {
 	}
 
 
-
-
-    
-    public String getEmail() {
-		return email;
+	
+	public String getUsername() {
+		return username;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
+
 	public String getFirst_name() {
 		return first_name;
 	}
@@ -123,18 +123,7 @@ public class User {
 	public void setPasswordConfirmation(String passwordConfirmation) {
 		this.passwordConfirmation = passwordConfirmation;
 	}
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+	
 	public List<Role> getRoles() {
 		return roles;
 	}

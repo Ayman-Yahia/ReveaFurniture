@@ -9,6 +9,6 @@ import com.codingdojo.ReveaStoreProject.models.Role;
 public interface RoleRepository extends CrudRepository<Role, Long> {
 	List<Role> findAll();
     
-    List<Role> findByEmail(String email);
+    List<Role> findByName(String name);
 
 }
