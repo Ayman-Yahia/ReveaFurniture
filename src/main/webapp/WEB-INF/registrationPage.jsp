@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>How to Design Login & Registration Form Transition</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,17 +14,17 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap"
 	rel="stylesheet">
+<script>
+$(document).ready(function(){
+    $('.img-btn').click(function(){
+        $('.cont').toggleClass( "s-signup" );
+        $('.sm-in').remove();
+}) 
+});
+    </script>
 
 </head>
 <body>
-	<script type="text/javascript">
-	
-	document.querySelector('.img-btn').addEventListener('click', function()
-			{
-				document.querySelector('.m-in').classList.toggle('s-signup')
-			}
-		);
-</script>
 	<div class="cont">
 		<form method="POST" action="/login">
 
@@ -40,14 +41,6 @@
 				<button class="submit" type="button">Sign In</button>
 				<p class="forgot-pass">Forgot Password ?</p>
 
-				<div class="social-media">
-					<ul>
-						<li><img src="images/facebook.png"></li>
-						<li><img src="images/twitter.png"></li>
-						<li><img src="images/linkedin.png"></li>
-						<li><img src="images/instagram.png"></li>
-					</ul>
-				</div>
 			</div>
 		</form>
 		<form:form method="POST" action="/registration" modelAttribute="user">
@@ -64,7 +57,7 @@
 							you!</p>
 					</div>
 					<div class="img-btn">
-						<span class="img-btn">Sign Up</span> <span class="m-in">Sign
+						<span class="img-btn sm-in">Sign Up</span> <span class="m-in">Sign
 							In</span>
 					</div>
 				</div>
@@ -88,6 +81,5 @@
 
 
 	</div>
-	<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
