@@ -29,6 +29,9 @@
                     <a href="/admin/add">Add Product</a>
                 </li>
                 <li>
+                    <a href="/admin/addcategory">Add Category</a>
+                </li>
+                <li>
                     <a href="/admin/charts">Charts</a>
                 </li><br>
                 <li>
@@ -54,7 +57,7 @@
       <th scope="col">Price</th>
       <th scope="col">Available Quantity</th>
       <th scope="col">Category</th>
-      <th scope="col">Delete Product</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -63,8 +66,8 @@
       <td><a href="/admin/${product.id}/edit"></a><c:out value="${product.name}"/></td>
       <td><c:out value="${product.price}"/></td>
       <td><c:out value="${product.availableQuantity}"/></td>
-      <td><c:out value="${product.category}"/></td>
-      <td><a href="/admin/${product.name}/delete"></a></td>
+      <td>${product.getCategory().getName()}</td>
+      <td><a href="/admin/${product.id}/delete">Delete</a></td>
     </tr>
     </c:forEach>
   </tbody>

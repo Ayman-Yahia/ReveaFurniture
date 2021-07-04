@@ -3,6 +3,7 @@ package com.codingdojo.ReveaStoreProject.controllers;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.codingdojo.ReveaStoreProject.models.Category;
 import com.codingdojo.ReveaStoreProject.models.Product;
 import com.codingdojo.ReveaStoreProject.models.User;
 import com.codingdojo.ReveaStoreProject.services.UserService;
@@ -84,16 +86,16 @@ public class UserController {
     @RequestMapping("/admin")
     public String adminPage(Principal principal, Model model) {
         String username = principal.getName();
-//        List<Product> allProducts=productService.allProducts();
-//        model.addAttribute("products",allProducts)
+        List<Product> allProducts=userService.allProducts();
+        model.addAttribute("products",allProducts);
         model.addAttribute("currentUser", userService.findByUsername(username));
         return "adminPage.jsp";
     }  
     @RequestMapping("/admin/users")
     public String adminUsers(Principal principal, Model model) {
-        String username = principal.getName();
         List<User> allUsers=userService.allUsers();
         model.addAttribute("users",allUsers);
+        String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
         return "adminUsers.jsp";
     }
@@ -104,17 +106,39 @@ public class UserController {
     	
     }
     @GetMapping("/admin/add")
-    public String addingPage(@ModelAttribute("product") Product product) {
+    public String addingPage(Principal principal,@ModelAttribute("product") Product product,Model model) {
+        String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+        model.addAttribute("categories",userService.allCategories());
     	return "adminAddProduct.jsp";
     	
     }
     @PostMapping("/admin/add")
-    public String adminAdd(Principal principal, Model model,@Valid@ModelAttribute("product") Product product,BindingResult result) {
+    public String adminAdd(Principal principal, Model model,@Valid@ModelAttribute("product") Product product,BindingResult result,@RequestParam("cat") Long cat) {
     	if(result.hasErrors()) {
 			
 			return "redirect:/admin/add";
 		}else {
-			userService.createProduct(product);
+			Product myProduct=userService.createProduct(product);
+			Category cato=userService.findCategoryById(cat);
+			myProduct.setCategory(cato);
+			userService.createProduct(myProduct);
+			return "redirect:/admin";
+		}
+    }
+    @GetMapping("admin/addcategory")
+    public String addCategory(Principal principal,@ModelAttribute("category") Category category,Model model) {
+        String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+    	return "addCategory.jsp";
+    }
+    @PostMapping("admin/addcategory")
+    public String addCategoryMethode(Principal principal,@Valid@ModelAttribute("category") Category category,BindingResult result) {
+    	if(result.hasErrors()) {
+			
+			return "redirect:/admin/addcategory";
+		}else {
+			userService.createCategory(category);
 			return "redirect:/admin";
 		}
     }
@@ -131,12 +155,21 @@ public class UserController {
 			
 		
     }
+    
     @RequestMapping(value = {"/", "/home"})
-    public String home(Principal principal, Model model) {
+    public String home(Principal principal, Model model,HttpSession session) {
+    	if(principal==null ) {
+            return "homePage.jsp";
+
+    	}
         String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
         return "homePage.jsp";
     }
-    //cart
+    @GetMapping("/admin/{id}/delete")
+    public String deletProduct(Principal principal,@PathVariable("id")Long id) {
+    	userService.deleteProduct(id);
+    	return "redirect:/admin";
+    }
     
 }

@@ -33,11 +33,6 @@ public class Order {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
-	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-	private List<Cart> carts;
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "orders_products", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
-	private List<Product> products;
 
 	public Order() {
 	}
@@ -102,21 +97,6 @@ public class Order {
 		this.user = user;
 	}
 
-	public List<Cart> getCarts() {
-		return carts;
-	}
-
-	public void setCarts(List<Cart> carts) {
-		this.carts = carts;
-	}
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
 
 	@PrePersist
 	protected void onCreate() {

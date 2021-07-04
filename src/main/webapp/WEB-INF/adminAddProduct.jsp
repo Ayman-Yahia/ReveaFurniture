@@ -28,6 +28,9 @@
                     <a href="/admin/add">Add Product</a>
                 </li>
                 <li>
+                    <a href="/admin/addcategory">Add Category</a>
+                </li>
+                <li>
                     <a href="/admin/charts">Charts</a>
                 </li><br>
                 <li>
@@ -47,9 +50,6 @@
         	<form:form method="POST" action="/admin/add" modelAttribute="product">
 			
 					<div class="row">
-					
-					</div>
-					<div class="row">
 						<label> <span>Name</span> <form:input type="text" class="form-control"
 							path="name" />
 					</label>
@@ -63,6 +63,7 @@
 						<label> <span>Price</span> <form:input type="number" class="form-control"   path="price" step="0.01" />
 					</label> 
 					</div>
+					
 					<div class="row">
 						<label> <span>Available Quantity</span> <form:input class="form-control" type="number" min="0" 
 							path="availableQuantity" />
@@ -72,10 +73,18 @@
 						<label> <span>Image</span> <form:input class="form-control"
 							type="text" path="image" />
 					</label>
+					</div>
+					<div class="row">
+						<label>Select Category</label>
+						<select class="form-select" aria-label="Default select example" name="cat">
+							<c:forEach items="${categories}" var="category">
+								<option value="${category.id}">${category.name}</option>
+							</c:forEach>
+						</select>
 					</div><br>
-					
 
 			
+			        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					
 					<button type="submit" class="btn btn-primary"/>Add Product</button>
 		</form:form>

@@ -28,6 +28,9 @@
                     <a href="/admin/add">Add Product</a>
                 </li>
                 <li>
+                    <a href="/admin/addcategory">Add Category</a>
+                </li>
+                <li>
                     <a href="/admin/charts">Charts</a>
                 </li><br>
                 <li>
@@ -74,10 +77,8 @@
 							type="text" path="image" />
 					</label>
 					</div><br>
-					
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-			
-					
 					<button type="submit" class="btn btn-primary"/>Add Product</button>
 		</form:form>
         </div>

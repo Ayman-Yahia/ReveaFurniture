@@ -8,10 +8,10 @@
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="/css/admin.css">
 <link rel="stylesheet" type="text/css" href="/css/admin.css">
-<title>Users</title>
+<title>Add Category</title>
 </head>
 <body>
-    <div id="wrapper" class="toggled">
+	<div id="wrapper" class="toggled">
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -27,7 +27,7 @@
                 <li>
                     <a href="/admin/add">Add Product</a>
                 </li>
-                <li>
+          		<li>
                     <a href="/admin/addcategory">Add Category</a>
                 </li>
                 <li>
@@ -45,30 +45,29 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <h1>Products</h1>
-   
+        <div class="container" >
+        <h1 class="jumbotron-heading">Add Category</h1>
+        	<form:form method="POST" action="/admin/addcategory" modelAttribute="category">
+			
+					<div class="row">
+					
+					</div>
+					<div class="row">
+						<label> <span>Name</span> <form:input type="text" class="form-control"
+							path="name" />
+					</label>
+					</div>
+					<br>
+					
 
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <c:forEach items="${users}" var="user">
-      <td><c:out value="${user.firstName}"/></td>
-      <td><c:out value="${user.lastName}"/></td>
-      <td><c:out value="${user.username}"/></td>
-    </tr>
-    </c:forEach>
-  </tbody>
-</table>
-             
-            </div>
+			        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					
+					
+					<button type="submit" class="btn btn-primary"/>Add Category</button>
+		</form:form>
+        </div>
+			
+   			
         </div>
         <!-- /#page-content-wrapper -->
 
@@ -82,7 +81,6 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-
 
 </body>
 </html>

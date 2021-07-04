@@ -6,9 +6,12 @@ import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.codingdojo.ReveaStoreProject.models.Cart;
+import com.codingdojo.ReveaStoreProject.models.Category;
 import com.codingdojo.ReveaStoreProject.models.Product;
 import com.codingdojo.ReveaStoreProject.models.User;
 import com.codingdojo.ReveaStoreProject.repositories.CartRepository;
+import com.codingdojo.ReveaStoreProject.repositories.CategoryRepository;
 import com.codingdojo.ReveaStoreProject.repositories.ProductRepository;
 import com.codingdojo.ReveaStoreProject.repositories.RoleRepository;
 import com.codingdojo.ReveaStoreProject.repositories.UserRepository;
@@ -20,15 +23,17 @@ public class UserService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	private CartRepository cartRepository;
 	private ProductRepository productRepository;
+	private CategoryRepository categoryRepository;
 
 
 	public UserService(UserRepository userRepository, RoleRepository roleRepository,
-			BCryptPasswordEncoder bCryptPasswordEncoder,CartRepository cartRepository,ProductRepository productRepository) {
+			BCryptPasswordEncoder bCryptPasswordEncoder,CartRepository cartRepository,ProductRepository productRepository,CategoryRepository categoryRepository) {
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 		this.cartRepository=cartRepository;
 		this.productRepository=productRepository;
+		this.categoryRepository=categoryRepository;
 	}
 
 	public void saveWithUserRole(User user) {
@@ -52,8 +57,20 @@ public class UserService {
 	 public Product createProduct(Product b) {
 	        return productRepository.save(b);
 	    }
+	 public Category createCategory(Category b) {
+	        return categoryRepository.save(b);
+	    }
 	 public Product findProductById(Long id) {
 	    	Optional<Product> event = productRepository.findById(id);
+	    	if(event.isPresent()) {
+	            return event.get();
+	    	}
+	    	else {
+	    	    return null;
+	    	}
+	    }
+	 public Category findCategoryById(Long id) {
+	    	Optional<Category> event = categoryRepository.findById(id);
 	    	if(event.isPresent()) {
 	            return event.get();
 	    	}
@@ -73,23 +90,46 @@ public class UserService {
 	    }
 	
 //	//cart
-//	public void addToCart(Long carId, Cart cartItems, User user){
-//
-//		Product product = productRepository.findById(carId).orElse(null);
-//		    cartItems.setProduct(product);
-//
-//		        cartItems.setTotalPrice(product.getPrice());
-//		        cartItems.setUser(user);
-//
-//		        cartRepository.save(cartItems);
-//
-//		}
-//		public List<Cart> myCart(String userName){
-//
-//		    List<Cart> cartItems = new ArrayList<>();
-//		    cartRepository.findByUsername(userName).forEach(cartItems::add);
-//
-//		    return cartItems;
-//		}
+	public void addToCart( Long user,Long product){
+		Cart m=cartRepository.findByProduct_IdAndUser_Id(product,user);
+		if (m!=null) {
+			int s=m.getQuantity();
+			m.setQuantity(s+1);
+			cartRepository.save(m);
 
+		}else {
+			User mUser=userRepository.findById(user).orElse(null);
+			Product mProduct=productRepository.findById(product).orElse(null);
+			Cart addCart=new Cart(mProduct.getPrice(),1,true,mUser,mProduct);
+			cartRepository.save(addCart);
+		}
+	}
+	public void addToCartWithQuantity( Long user,Long product,int quantity){
+		Cart m=cartRepository.findByProduct_IdAndUser_Id(product,user);
+		if (m!=null) {
+			int s=m.getQuantity();
+			m.setQuantity(s+quantity);
+			cartRepository.save(m);
+
+		}else {
+			User mUser=userRepository.findById(user).orElse(null);
+			Product mProduct=productRepository.findById(product).orElse(null);
+			Cart addCart=new Cart(mProduct.getPrice(),quantity,true,mUser,mProduct);
+			cartRepository.save(addCart);
+		}
+	}
+	public void removeProduuctFromCart(Long user,Long product) {
+		Cart m=cartRepository.findByProduct_IdAndUser_Id(product,user);
+		cartRepository.deleteById(m.getId());
+		
+	}
+	public List<Product> allProducts(){
+		return productRepository.findAll();
+	}
+	public List<Category> allCategories(){
+		return categoryRepository.findAll();
+	}
+	public void deleteProduct(Long id) {
+		productRepository.deleteById(id);
+	}
 }

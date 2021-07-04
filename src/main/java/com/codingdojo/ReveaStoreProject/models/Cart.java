@@ -22,6 +22,7 @@ public class Cart {
 	private Long id;
 	private double totalPrice;
 	private int quantity;
+	private boolean ordered;
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
@@ -29,13 +30,30 @@ public class Cart {
     @JoinColumn(name="user_id")
     private User user;
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="order_id")
-    private Order order;
-	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="product_id")
     private Product product;
 	
 	public Cart() {
+	}
+	
+	public Cart( double totalPrice, int quantity, boolean ordered, User user, Product product) {
+		this.totalPrice = totalPrice;
+		this.quantity = quantity;
+		this.ordered = ordered;
+		this.user = user;
+		this.product = product;
+	}
+
+	public boolean isOrdered() {
+		return ordered;
+	}
+
+	public void setOrdered(boolean ordered) {
+		this.ordered = ordered;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	public Long getId() {
@@ -83,13 +101,6 @@ public class Cart {
 		this.user = user;
 	}
 
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
 
 	public Product getProduct() {
 		return product;
