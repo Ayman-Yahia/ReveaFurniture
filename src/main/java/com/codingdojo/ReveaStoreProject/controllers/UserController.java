@@ -42,7 +42,7 @@ public class UserController {
         }
         
         userService.saveWithUserRole(user);
-        return "homePage.jsp";
+        return "redirect:/login";
 
     }
     // ******************************************************************************
