@@ -20,7 +20,7 @@ public class Cart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private float totalPrice;
+	private double totalPrice;
 	private int quantity;
 	@Column(updatable = false)
 	private Date createdAt;
@@ -42,7 +42,7 @@ public class Cart {
 		return id;
 	}
 
-	public float getTotalPrice() {
+	public double getTotalPrice() {
 		return totalPrice;
 	}
 

@@ -1,6 +1,5 @@
 package com.codingdojo.ReveaStoreProject.models;
 
-import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
@@ -27,9 +26,9 @@ public class Product {
 	private Long id;
 	private String name;
 	private String description;
-	private float price;
+	private double price;
 	private int availableQuantity;
-	private Blob image;
+	private String image;
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
@@ -68,11 +67,11 @@ public class Product {
 		this.description = description;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -84,11 +83,11 @@ public class Product {
 		this.availableQuantity = availableQuantity;
 	}
 
-	public Blob getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(Blob image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

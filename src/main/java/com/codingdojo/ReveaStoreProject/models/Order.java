@@ -26,7 +26,7 @@ public class Order {
 	private Long quantity;
 	private String address;
 	private Long phone_unmber;
-	private float total_price;
+	private double total_price;
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
@@ -70,11 +70,11 @@ public class Order {
 		this.phone_unmber = phone_unmber;
 	}
 
-	public float getTotal_price() {
+	public double getTotal_price() {
 		return total_price;
 	}
 
-	public void setTotal_price(float total_price) {
+	public void setTotal_price(double total_price) {
 		this.total_price = total_price;
 	}
 
