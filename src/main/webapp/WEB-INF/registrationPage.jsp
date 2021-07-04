@@ -43,7 +43,13 @@ $(document).ready(function(){
 
 			</div>
 		</form>
+		
+		<div>
+		<p>
+			<form:errors path="user.*" />
+		</p>
 		<form:form method="POST" action="/registration" modelAttribute="user">
+		
 
 			<div class="sub-cont">
 				<div class="img">
@@ -78,6 +84,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</form:form>
+		</div>
 
 
 	</div>

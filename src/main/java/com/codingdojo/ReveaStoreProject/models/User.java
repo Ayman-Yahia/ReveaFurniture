@@ -29,10 +29,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	@NotNull
-	@Size(min=2)
+	@Size(min=2,max=25,message="firstName must be greater than 2 characters")
 	private String firstName;
 	@NotNull
-	@Size(min=2)
+	@Size(min=2,max=25)
 	private String lastName;
 	@NotNull
 	@Email(message="Email must be valid")
