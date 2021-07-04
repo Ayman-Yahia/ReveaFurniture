@@ -61,21 +61,17 @@ public class UserController {
     
     @RequestMapping("/login")
     public String loginpage(@ModelAttribute("user") User user) {
-        System.out.println("11");
         return "registrationPage.jsp";
     }
     
     @PostMapping("/login")
     public String login(@ModelAttribute("user") User user,@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
         if(error != null) {
-            System.out.println("noooooo");
             model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
         }
         if(logout != null) {
-            System.out.println("yessssss");
             model.addAttribute("logoutMessage", "Logout Successful!");
         }
-        System.out.println("skipppppp");
         return "redirect:/home";
     }
     
@@ -94,4 +90,6 @@ public class UserController {
         model.addAttribute("currentUser", userService.findByUsername(username));
         return "homePage.jsp";
     }
+    //cart
+    
 }
