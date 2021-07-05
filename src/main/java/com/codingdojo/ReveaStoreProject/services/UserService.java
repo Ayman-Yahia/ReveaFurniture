@@ -91,35 +91,46 @@ public class UserService {
 	
 //	//cart
 	public void addToCart( Long user,Long product){
-		Cart m=cartRepository.findByProduct_IdAndUser_Id(product,user);
-		if (m!=null) {
-			int s=m.getQuantity();
-			m.setQuantity(s+1);
-			cartRepository.save(m);
+		Product mProduct=productRepository.findById(product).orElse(null);
+		if((mProduct.getAvailableQuantity()-1)>=0) {
+			Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,true);
+			if (m!=null) {
+				int s=m.getQuantity();
+				m.setQuantity(s+1);
+				cartRepository.save(m);
 
-		}else {
-			User mUser=userRepository.findById(user).orElse(null);
-			Product mProduct=productRepository.findById(product).orElse(null);
-			Cart addCart=new Cart(mProduct.getPrice(),1,true,mUser,mProduct);
-			cartRepository.save(addCart);
+			}else {
+				User mUser=userRepository.findById(user).orElse(null);
+				mProduct.setAvailableQuantity(mProduct.getAvailableQuantity()-1);
+				productRepository.save(mProduct);
+				Cart addCart=new Cart(mProduct.getPrice(),1,true,mUser,mProduct);
+				cartRepository.save(addCart);
+			}
 		}
+		
+		
 	}
 	public void addToCartWithQuantity( Long user,Long product,int quantity){
-		Cart m=cartRepository.findByProduct_IdAndUser_Id(product,user);
-		if (m!=null) {
-			int s=m.getQuantity();
-			m.setQuantity(s+quantity);
-			cartRepository.save(m);
+		Product mProduct=productRepository.findById(product).orElse(null);
+		if((mProduct.getAvailableQuantity()-quantity)>=0) {
+			Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,true);
+			if (m!=null) {
+				int s=m.getQuantity();
+				m.setQuantity(s+quantity);
+				cartRepository.save(m);
 
-		}else {
-			User mUser=userRepository.findById(user).orElse(null);
-			Product mProduct=productRepository.findById(product).orElse(null);
-			Cart addCart=new Cart(mProduct.getPrice(),quantity,true,mUser,mProduct);
-			cartRepository.save(addCart);
+			}else {
+				User mUser=userRepository.findById(user).orElse(null);
+				mProduct.setAvailableQuantity(mProduct.getAvailableQuantity()-quantity);
+				productRepository.save(mProduct);
+				Cart addCart=new Cart(mProduct.getPrice(),quantity,true,mUser,mProduct);
+				cartRepository.save(addCart);
+			}
 		}
+		
 	}
 	public void removeProduuctFromCart(Long user,Long product) {
-		Cart m=cartRepository.findByProduct_IdAndUser_Id(product,user);
+		Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,true);
 		cartRepository.deleteById(m.getId());
 		
 	}
@@ -131,5 +142,8 @@ public class UserService {
 	}
 	public void deleteProduct(Long id) {
 		productRepository.deleteById(id);
+	}
+	public List<Product> productsOrderdByPrice(){
+		return productRepository.findByOrderByPriceAsc();
 	}
 }

@@ -63,11 +63,11 @@
   <tbody>
     <tr>
     <c:forEach items="${products}" var="product">
-      <td><a href="/admin/${product.id}/edit"></a><c:out value="${product.name}"/></td>
+      <td></a><c:out value="${product.name}"/></td>
       <td><c:out value="${product.price}"/></td>
       <td><c:out value="${product.availableQuantity}"/></td>
       <td>${product.getCategory().getName()}</td>
-      <td><a href="/admin/${product.id}/delete">Delete</a></td>
+      <td><a href="/admin/edit/${product.id}">Edit</a> <a href="/admin/${product.id}/delete">Delete</a></td>
     </tr>
     </c:forEach>
   </tbody>
