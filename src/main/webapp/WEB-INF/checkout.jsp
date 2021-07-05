@@ -1,185 +1,194 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<!-- Meta Tag -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name='copyright' content=''>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Title Tag  -->
-    <title>Eshop - eCommerce HTML5 Template.</title>
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="images/favicon.png">
-	<!-- Web Font -->
-	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-	
-	<!-- StyleSheet -->
-	
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<!-- Magnific Popup -->
-    <link rel="stylesheet" href="css/magnific-popup.min.css">
-	<!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.css">
-	<!-- Fancybox -->
-	<link rel="stylesheet" href="css/jquery.fancybox.min.css">
-	<!-- Themify Icons -->
-    <link rel="stylesheet" href="css/themify-icons.css">
-	<!-- Nice Select CSS -->
-    <link rel="stylesheet" href="css/niceselect.css">
-	<!-- Animate CSS -->
-    <link rel="stylesheet" href="css/animate.css">
-	<!-- Flex Slider CSS -->
-    <link rel="stylesheet" href="css/flex-slider.min.css">
-	<!-- Owl Carousel -->
-    <link rel="stylesheet" href="css/owl-carousel.css">
-	<!-- Slicknav -->
-    <link rel="stylesheet" href="css/slicknav.min.css">
-	
-	<!-- Eshop StyleSheet -->
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+<head>
+<!-- Meta Tag -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name='copyright' content=''>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Title Tag  -->
+<title>Eshop - eCommerce HTML5 Template.</title>
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="images/favicon.png">
+<!-- Web Font -->
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+	rel="stylesheet">
 
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-	
-	
+<!-- StyleSheet -->
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<!-- Magnific Popup -->
+<link rel="stylesheet" href="css/magnific-popup.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="css/font-awesome.css">
+<!-- Fancybox -->
+<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<!-- Themify Icons -->
+<link rel="stylesheet" href="css/themify-icons.css">
+<!-- Nice Select CSS -->
+<link rel="stylesheet" href="css/niceselect.css">
+<!-- Animate CSS -->
+<link rel="stylesheet" href="css/animate.css">
+<!-- Flex Slider CSS -->
+<link rel="stylesheet" href="css/flex-slider.min.css">
+<!-- Owl Carousel -->
+<link rel="stylesheet" href="css/owl-carousel.css">
+<!-- Slicknav -->
+<link rel="stylesheet" href="css/slicknav.min.css">
+
+<!-- Eshop StyleSheet -->
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<link rel="stylesheet" type="text/css" href="css/index.css">
+
+
 </head>
 <body class="js">
-	
-	<!-- Preloader -->
-	<div class="preloader">
-		<div class="preloader-inner">
-			<div class="preloader-icon">
-				<span></span>
-				<span></span>
+
+	<!-- Header -->
+	<header class="header shop">
+		<!-- Topbar -->
+		<div class="topbar">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-12">
+						<!-- Top Left -->
+						<div class="top-left">
+							<ul class="list-main">
+								<li><i class="ti-headphone-alt"></i> +970 599999999</li>
+								<li><i class="ti-email"></i> support@revea.com</li>
+							</ul>
+						</div>
+						<!--/ End Top Left -->
+					</div>
+					<div class="col-lg-8 col-md-12 col-12">
+						<!-- Top Right -->
+						<div class="right-content">
+							<ul class="list-main">
+								<li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+							</ul>
+						</div>
+						<!-- End Top Right -->
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<!-- End Preloader -->
-		
-		<!-- Header -->
-		<header class="header shop">
-			<!-- Topbar -->
-			<div class="topbar">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-4 col-md-12 col-12">
-							<!-- Top Left -->
-							<div class="top-left">
-								<ul class="list-main">
-									<li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-									<li><i class="ti-email"></i> support@shophub.com</li>
-								</ul>
-							</div>
-							<!--/ End Top Left -->
+		<!-- End Topbar -->
+		<div class="middle-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-12">
+						<!-- Logo -->
+						<div class="logo">
+							<a href="index.html"><img src="images/logo.png" alt="logo"></a>
+							<h3 style="margin-left: 20%">Revea</h3>
 						</div>
-						<div class="col-lg-8 col-md-12 col-12">
-							<!-- Top Right -->
-							<div class="right-content">
-								<ul class="list-main">
-									<li><i class="ti-location-pin"></i> Store location</li>
-									<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-									<li><i class="ti-user"></i> <a href="#">My account</a></li>
-									<li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
-								</ul>
+						<!--/ End Logo -->
+						<!-- Search Form -->
+						<div class="search-top">
+							<div class="top-search">
+								<a href="#0"><i class="ti-search"></i></a>
 							</div>
-							<!-- End Top Right -->
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Topbar -->
-			<div class="middle-inner">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-2 col-md-2 col-12">
-							<!-- Logo -->
-							<div class="logo">
-								<a href="index.html"><img src="images/logo.png" alt="logo"></a>
-							</div>
-							<!--/ End Logo -->
 							<!-- Search Form -->
 							<div class="search-top">
-								<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-								<!-- Search Form -->
-								<div class="search-top">
-									<form class="search-form">
-										<input type="text" placeholder="Search here..." name="search">
-										<button value="search" type="submit"><i class="ti-search"></i></button>
-									</form>
-								</div>
-								<!--/ End Search Form -->
+								<form class="search-form">
+									<input type="text" placeholder="Search here..." name="search">
+									<button value="search" type="submit">
+										<i class="ti-search"></i>
+									</button>
+								</form>
 							</div>
 							<!--/ End Search Form -->
-							<div class="mobile-nav"></div>
 						</div>
-						<div class="col-lg-8 col-md-7 col-12">
-							<div class="search-bar-top">
-								<div class="search-bar">
-									<select>
-										<option selected="selected">All Category</option>
-										<option>watch</option>
-										<option>mobile</option>
-										<option>kid’s item</option>
-									</select>
-									<form>
-										<input name="search" placeholder="Search Products Here....." type="search">
-										<button class="btnn"><i class="ti-search"></i></button>
-									</form>
-								</div>
+						<!--/ End Search Form -->
+						<div class="mobile-nav"></div>
+					</div>
+					<div class="col-lg-8 col-md-7 col-12">
+						<div class="search-bar-top">
+							<div class="search-bar">
+								<select>
+									<option selected="selected">All Category</option>
+									<option>Sofas</option>
+									<option>Gaming Room</option>
+									<option>Beds</option>
+
+								</select>
+								<form>
+									<input name="search" placeholder="Search Products Here....."
+										type="search">
+									<button class="btnn">
+										<i class="ti-search"></i>
+									</button>
+								</form>
 							</div>
 						</div>
-						<div class="col-lg-2 col-md-3 col-12">
-							<div class="right-bar">
-								<!-- Search Form -->
-								<div class="sinlge-bar">
-									<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-								</div>
-								<div class="sinlge-bar">
-									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-								</div>
-								<div class="sinlge-bar shopping">
-									<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
-									<!-- Shopping Item -->
-									<div class="shopping-item">
-										<div class="dropdown-cart-header">
-											<span>2 Items</span>
-											<a href="#">View Cart</a>
-										</div>
-										<ul class="shopping-list">
-											<li>
-												<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-												<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-												<h4><a href="#">Woman Ring</a></h4>
-												<p class="quantity">1x - <span class="amount">$99.00</span></p>
-											</li>
-											<li>
-												<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-												<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-												<h4><a href="#">Woman Necklace</a></h4>
-												<p class="quantity">1x - <span class="amount">$35.00</span></p>
-											</li>
-										</ul>
-										<div class="bottom">
-											<div class="total">
-												<span>Total</span>
-												<span class="total-amount">$134.00</span>
-											</div>
-											<a href="checkout.html" class="btn animate">Checkout</a>
-										</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-12">
+						<div class="right-bar">
+							<!-- Search Form -->
+							<div class="sinlge-bar">
+								<a href="#" class="single-icon"><i class="fa fa-heart-o"
+									aria-hidden="true"></i></a>
+							</div>
+							<div class="sinlge-bar">
+								<a href="#" class="single-icon"><i
+									class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+							</div>
+							<div class="sinlge-bar shopping">
+								<a href="#" class="single-icon"><i class="ti-bag"></i> <span
+									class="total-count">2</span></a>
+								<!-- Shopping Item -->
+								<div class="shopping-item">
+									<div class="dropdown-cart-header">
+
+										<a href="#">View Cart</a>
 									</div>
-									<!--/ End Shopping Item -->
+									<ul class="shopping-list">
+										<li><a href="#" class="remove" title="Remove this item"><i
+												class="fa fa-remove"></i></a> <a class="cart-img" href="#"><img
+												src="https://via.placeholder.com/70x70" alt="#"></a>
+											<h4>
+												<a href="#">Gaming Chair</a>
+											</h4>
+											<p class="quantity">
+												1x - <span class="amount">$399.99</span>
+											</p></li>
+										<li><a href="#" class="remove" title="Remove this item"><i
+												class="fa fa-remove"></i></a> <a class="cart-img" href="#"><img
+												src="https://via.placeholder.com/70x70" alt="#"></a>
+											<h4>
+												<a href="#">Dining Table </a>
+											</h4>
+											<p class="quantity">
+												1x - <span class="amount">$500.00</span>
+											</p></li>
+									</ul>
+									<div class="bottom">
+										<div class="total">
+											<span>Total</span> <span class="total-amount">$899.99</span>
+										</div>
+										<a href="checkout.html" class="btn animate">Checkout</a>
+									</div>
 								</div>
+								<!--/ End Shopping Item -->
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- Header Inner -->
+		</div>
+		<!-- Header Inner -->
 			<div class="header-inner">
 				<div class="container">
 					<div class="cat-nav-head">
@@ -220,9 +229,9 @@
 				</div>
 			</div>
 			<!--/ End Header Inner -->
-		</header>
-		<!--/ End Header -->
-	
+	</header>
+	<!--/ End Header -->
+
 		<!-- Breadcrumbs -->
 		<div class="breadcrumbs">
 			<div class="container">
@@ -251,24 +260,7 @@
 							<!-- Form -->
 							<form class="form" method="post" action="#">
 								<div class="row">
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>First Name<span>*</span></label>
-											<input type="text" name="name" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Last Name<span>*</span></label>
-											<input type="text" name="name" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Email Address<span>*</span></label>
-											<input type="email" name="email" placeholder="" required="required">
-										</div>
-									</div>
+									
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Phone Number<span>*</span></label>
@@ -543,40 +535,8 @@
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
-											<label>Address Line 1<span>*</span></label>
+											<label>Address<span>*</span></label>
 											<input type="text" name="address" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Address Line 2<span>*</span></label>
-											<input type="text" name="address" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Postal Code<span>*</span></label>
-											<input type="text" name="post" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Company<span>*</span></label>
-											<select name="company_name" id="company">
-												<option value="company" selected="selected">Microsoft</option>
-												<option>Apple</option>
-												<option>Xaiomi</option>
-												<option>Huawer</option>
-												<option>Wpthemesgrid</option>
-												<option>Samsung</option>
-												<option>Motorola</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-12">
-										<div class="form-group create-account">
-											<input id="cbox" type="checkbox">
-											<label>Create an account?</label>
 										</div>
 									</div>
 								</div>
@@ -678,121 +638,102 @@
 		</section>
 		<!-- End Shop Services -->
 		
-		<!-- Start Shop Newsletter  -->
-		<section class="shop-newsletter section">
-			<div class="container">
-				<div class="inner-top">
-					<div class="row">
-						<div class="col-lg-8 offset-lg-2 col-12">
-							<!-- Start Newsletter Inner -->
-							<div class="inner">
-								<h4>Newsletter</h4>
-								<p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
-								<form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-									<input name="EMAIL" placeholder="Your email address" required="" type="email">
-									<button class="btn">Subscribe</button>
-								</form>
-							</div>
-							<!-- End Newsletter Inner -->
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End Shop Newsletter -->
+		
 			
-		<!-- Start Footer Area -->
-		<footer class="footer">
-			<!-- Footer Top -->
-			<div class="footer-top section">
-				<div class="container">
+			<!-- Start Footer Area -->
+	<footer class="footer">
+		<!-- Footer Top -->
+		<div class="footer-top section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer about">
+							<div class="logo">
+								<a href="index.html"><img src="images/logo2.png" alt="#"></a>
+							</div>
+							<p class="text">A well planned home always needs well
+								designed furniture.</p>
+							<p class="call">
+								<span><a href="tel:123456789">Revea Store</a></span>
+							</p>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-2 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer links">
+							<h4>Information</h4>
+							<ul>
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">Faq</a></li>
+								<li><a href="#">Terms & Conditions</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Help</a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-2 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer links">
+							<h4>Customer Service</h4>
+							<ul>
+								<li><a href="#">Payment Methods</a></li>
+								<li><a href="#">Money-back</a></li>
+								<li><a href="#">Returns</a></li>
+								<li><a href="#">Shipping</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer social">
+							<h4>Get In Tuch</h4>
+							<!-- Single Widget -->
+							<div class="contact">
+								<ul>
+									<li>Ramallah</li>
+									<li>info@revea.com</li>
+									<li>+970 599999999</li>
+								</ul>
+							</div>
+							<!-- End Single Widget -->
+							<ul>
+								<li><a href="#"><i class="ti-facebook"></i></a></li>
+								<li><a href="#"><i class="ti-twitter"></i></a></li>
+								<li><a href="#"><i class="ti-flickr"></i></a></li>
+								<li><a href="#"><i class="ti-instagram"></i></a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Footer Top -->
+		<div class="copyright">
+			<div class="container">
+				<div class="inner">
 					<div class="row">
-						<div class="col-lg-5 col-md-6 col-12">
-							<!-- Single Widget -->
-							<div class="single-footer about">
-								<div class="logo">
-									<a href="index.html"><img src="images/logo2.png" alt="#"></a>
-								</div>
-								<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-								<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+						<div class="col-lg-6 col-12">
+							<div class="left">
+								<p>Copyright © 2021 - All Rights Reserved.</p>
 							</div>
-							<!-- End Single Widget -->
 						</div>
-						<div class="col-lg-2 col-md-6 col-12">
-							<!-- Single Widget -->
-							<div class="single-footer links">
-								<h4>Information</h4>
-								<ul>
-									<li><a href="#">About Us</a></li>
-									<li><a href="#">Faq</a></li>
-									<li><a href="#">Terms & Conditions</a></li>
-									<li><a href="#">Contact Us</a></li>
-									<li><a href="#">Help</a></li>
-								</ul>
-							</div>
-							<!-- End Single Widget -->
-						</div>
-						<div class="col-lg-2 col-md-6 col-12">
-							<!-- Single Widget -->
-							<div class="single-footer links">
-								<h4>Customer Service</h4>
-								<ul>
-									<li><a href="#">Payment Methods</a></li>
-									<li><a href="#">Money-back</a></li>
-									<li><a href="#">Returns</a></li>
-									<li><a href="#">Shipping</a></li>
-									<li><a href="#">Privacy Policy</a></li>
-								</ul>
-							</div>
-							<!-- End Single Widget -->
-						</div>
-						<div class="col-lg-3 col-md-6 col-12">
-							<!-- Single Widget -->
-							<div class="single-footer social">
-								<h4>Get In Tuch</h4>
-								<!-- Single Widget -->
-								<div class="contact">
-									<ul>
-										<li>NO. 342 - London Oxford Street.</li>
-										<li>012 United Kingdom.</li>
-										<li>info@eshop.com</li>
-										<li>+032 3456 7890</li>
-									</ul>
-								</div>
-								<!-- End Single Widget -->
-								<ul>
-									<li><a href="#"><i class="ti-facebook"></i></a></li>
-									<li><a href="#"><i class="ti-twitter"></i></a></li>
-									<li><a href="#"><i class="ti-flickr"></i></a></li>
-									<li><a href="#"><i class="ti-instagram"></i></a></li>
-								</ul>
-							</div>
-							<!-- End Single Widget -->
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Footer Top -->
-			<div class="copyright">
-				<div class="container">
-					<div class="inner">
-						<div class="row">
-							<div class="col-lg-6 col-12">
-								<div class="left">
-									<p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a>  -  All Rights Reserved.</p>
-								</div>
-							</div>
-							<div class="col-lg-6 col-12">
-								<div class="right">
-									<img src="images/payments.png" alt="#">
-								</div>
+						<div class="col-lg-6 col-12">
+							<div class="right">
+								<img src="images/payments.png" alt="#">
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</footer>
-		<!-- /End Footer Area -->
+		</div>
+	</footer>
+	<!-- /End Footer Area -->
  
 	<!-- Jquery -->
     <script src="js/jquery.min.js"></script>

@@ -159,12 +159,12 @@ public class UserController {
     @RequestMapping(value = {"/", "/home"})
     public String home(Principal principal, Model model,HttpSession session) {
     	if(principal==null ) {
-            return "cartPage.jsp";
+            return "checkout.jsp";
 
     	}
         String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
-        return "cartPage.jsp";
+        return "checkout.jsp";
     }
     @GetMapping("/admin/{id}/delete")
     public String deletProduct(Principal principal,@PathVariable("id")Long id) {
