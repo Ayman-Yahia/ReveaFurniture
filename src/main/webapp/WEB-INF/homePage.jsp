@@ -82,7 +82,7 @@
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
-								<li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+								<li><i class="ti-power-off"></i><a href="/login">Login</a></li>
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -157,7 +157,7 @@
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 
-										<a href="#">View Cart</a>
+										<a href="/cart">View Cart</a>
 									</div>
 									<ul class="shopping-list">
 										<li><a href="#" class="remove" title="Remove this item"><i
@@ -183,7 +183,7 @@
 										<div class="total">
 											<span>Total</span> <span class="total-amount">$899.99</span>
 										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
+										<a href="/checkout" class="btn animate">Checkout</a>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->

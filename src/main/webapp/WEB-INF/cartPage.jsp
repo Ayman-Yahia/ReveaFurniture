@@ -74,7 +74,7 @@
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
-								<li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+								<li><i class="ti-power-off"></i><a href="/login">Login</a></li>
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -150,7 +150,7 @@
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 
-										<a href="#">View Cart</a>
+										<a href="/cart">View Cart</a>
 									</div>
 									<ul class="shopping-list">
 										<li><a href="#" class="remove" title="Remove this item"><i
@@ -176,7 +176,7 @@
 										<div class="total">
 											<span>Total</span> <span class="total-amount">$899.99</span>
 										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
+										<a href="/checkout" class="btn animate">Checkout</a>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->
@@ -205,7 +205,7 @@
 														<ul class="dropdown">
 															<li><a href="shop-grid.html">Shop Grid</a></li>
 															<li><a href="cart.html">Cart</a></li>
-															<li><a href="checkout.html">Checkout</a></li>
+															<li><a href="/checkout">Checkout</a></li>
 														</ul>
 													</li>
 													<li><a href="#">Pages</a></li>									
@@ -322,7 +322,7 @@
 										<li class="last">You Pay<span>$310.00</span></li>
 									</ul>
 									<div class="button5">
-										<a href="#" class="btn">Checkout</a> <a href="#" class="btn">Continue
+										<a href="/checkout" class="btn">Checkout</a> <a href="/home" class="btn">Continue
 											shopping</a>
 									</div>
 								</div>

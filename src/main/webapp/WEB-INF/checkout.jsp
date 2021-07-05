@@ -152,7 +152,7 @@
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 
-										<a href="#">View Cart</a>
+										<a href="/cart">View Cart</a>
 									</div>
 									<ul class="shopping-list">
 										<li><a href="#" class="remove" title="Remove this item"><i
@@ -178,7 +178,7 @@
 										<div class="total">
 											<span>Total</span> <span class="total-amount">$899.99</span>
 										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
+										<a href="/checkout" class="btn animate">Checkout</a>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->

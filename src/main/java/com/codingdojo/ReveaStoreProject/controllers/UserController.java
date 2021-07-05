@@ -159,21 +159,26 @@ public class UserController {
     @RequestMapping(value = {"/", "/home"})
     public String home(Principal principal, Model model,HttpSession session) {
     	if(principal==null ) {
-            return "checkout.jsp";
+            return "homePage.jsp";
 
     	}
         String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
-        return "checkout.jsp";
+        return "homePage.jsp";
     }
     @GetMapping("/admin/{id}/delete")
     public String deletProduct(Principal principal,@PathVariable("id")Long id) {
     	userService.deleteProduct(id);
     	return "redirect:/admin";
     }
-//  @RequestMapping("/home")
-//  public String loginpaged() {
-//      return "cartPage.jsp";
-//  }
-    
+    //cart route
+    @RequestMapping("/cart")
+    public String cart() {
+        return "cartPage.jsp";
+    }
+    //checkout
+    @RequestMapping("/checkout")
+    public String checkout() {
+        return "checkout.jsp";
+    }
 }
