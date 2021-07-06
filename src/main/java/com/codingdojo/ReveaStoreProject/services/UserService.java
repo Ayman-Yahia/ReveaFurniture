@@ -103,7 +103,9 @@ public class UserService {
 //	//cart
 	public void addToCart( Long user,Long product){
 		Product mProduct=productRepository.findById(product).orElse(null);
-		Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,true);
+		Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,false);
+		mProduct.setAvailableQuantity(mProduct.getAvailableQuantity()-1);
+		productRepository.save(mProduct);
 		if (m!=null) {
 			int s=m.getQuantity();
 			m.setQuantity(s+1);
@@ -121,26 +123,30 @@ public class UserService {
 	}
 	public void addToCartWithQuantity( Long user,Long product,int quantity){
 		Product mProduct=productRepository.findById(product).orElse(null);
-		if((mProduct.getAvailableQuantity()-quantity)>=0) {
-			Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,true);
-			if (m!=null) {
-				int s=m.getQuantity();
-				m.setQuantity(s+quantity);
-				cartRepository.save(m);
+		Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,false);
+		mProduct.setAvailableQuantity(mProduct.getAvailableQuantity()-quantity);
+		productRepository.save(mProduct);
+		if (m!=null) {
+			int s=m.getQuantity();
+			int l=s+quantity;
+			m.setQuantity(l);
+			cartRepository.save(m);
 
-			}else {
-				User mUser=userRepository.findById(user).orElse(null);
-				mProduct.setAvailableQuantity(mProduct.getAvailableQuantity()-quantity);
-				productRepository.save(mProduct);
-				Cart addCart=new Cart(mProduct.getPrice(),quantity,true,mUser,mProduct);
-				cartRepository.save(addCart);
-			}
-		}
-		
+		}else {
+			User mUser=userRepository.findById(user).orElse(null);
+			mProduct.setAvailableQuantity(mProduct.getAvailableQuantity()-quantity);
+			productRepository.save(mProduct);
+			Cart addCart=new Cart(mProduct.getPrice(),quantity,false,mUser,mProduct);
+			cartRepository.save(addCart);
+		}		
 	}
 	public void removeProduuctFromCart(Long user,Long product) {
-		Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,true);
+System.out.println("inside the service");
+		Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,false);
 		cartRepository.deleteById(m.getId());
+		
+	}
+	public void checkoutProducts() {
 		
 	}
 	public List<Cart> cartProducts(Long userId,boolean m){
@@ -166,9 +172,7 @@ public class UserService {
 	public List<Product> productsOrderdByPrice(){
 		return productRepository.findByOrderByPriceAsc();
 	}
-	public User findUser(String us) {
-		return userRepository.findByUsername(us);
-	}
+
 	public List<Product> searchProduct(String title) {
 		return productRepository.findByNameContaining(title);
 	}

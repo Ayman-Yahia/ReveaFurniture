@@ -102,7 +102,7 @@
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <form action="/search" method="GET" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
                     <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
                     <button type="submit" class="input-group-text bg-success text-light">
@@ -130,7 +130,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h1 class="h2"><c:out value="${product.name}"/></h1>
-                            <p class="h3 py-2">$<c:out value="${product.price}"/></p>
+                            <p class="h3 py-2">Unit Price:$<c:out value="${product.price}"/></p>
         
                             <h2 class="h2">Available Quantity</h2>
                             <c:choose>
@@ -145,14 +145,13 @@
 							   </c:otherwise>
 							</c:choose>
 							
-                            <p class="h3 py-2"><c:out value="${product.availableQuantity}"/></p>
 
                             <h2 class="h2">Description:</h2>
                             <p><c:out value="${product.description}"/>.</p>
                             
 
 
-                            <form action="/cart/${product.id}" method="POST">
+                            <form action="/cart/${product.id}" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
                                     
@@ -160,10 +159,9 @@
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
                                                 Quantity:
-                                                <input type="hidden" name="quanity" id="product-quanity" >
                                             </li>
                                             <div class="form-group">
-												<input id="colorful" class="form-control" type="number"  min="1" max="${product.availableQuantity}" />
+												<input id="colorful" class="form-control" name="quantity" type="number"  min="1" max="${product.availableQuantity}" value="1" />
 											</div>
                                         </ul>
                                     </div>

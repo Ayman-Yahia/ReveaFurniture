@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/templatemo.css">
     <link rel="stylesheet" href="/css/custom.css">
-
+    <link rel="stylesheet" href="/css/style1.css">
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="/css/fontawesome.min.css">
@@ -84,10 +84,7 @@
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="/cart">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"><c:out value="${size}"></c:out></span>
-                    </a>
+                    
    
                 </div>
             </div>
@@ -102,7 +99,7 @@
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <form action="/search" method="GET" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
                     <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
                     <button type="submit" class="input-group-text bg-success text-light">
@@ -117,10 +114,45 @@
 
     <!-- Start Content -->
     <section class="bg-light">
-    	
+    <div class="container text-dark bg-white mt-5 pb-2 mb-3">
+      <div class="row p-4 bg-mobile">
+        <div class="col-md-6">
+          <h2 class="text-success">Cart Details</h2>
+        </div>
+
+      </div>
+      <c:forEach items="${carts}" var="cart">
+    	<div class="row p-3 effects">
+        <div class="col-md-3">
+          <img src="icon.jpg" class="img-responsive" >
+        </div>
+        <div class="col-md-3">
+          <h3 class="text-info">Quantity: </h3>
+          <h5><c:out value="${cart.quantity}"/></h5>
+        </div>
+        <div class="col-md-3">
+          <h4>Unit Price :</h4>
+          <h5>$<c:out value="${cart.totalPrice}"/></h5>
+        </div>
+        
+        <div class="col-md-3">
+        <form method="GET" action="/cart/remove/${cart.id}">
+          <button  class="btn btn-danger">Remove</button>
+          </form>
+        </div>
+      </div>
+      </c:forEach>
+      <div class="col-md-6 " style="margin-left:25px">
+      		<h3 class="text-info">Total Price: <c:out value="${tp}"/> </h3>
+      		<form method="GET" action="/checkout">
+ 		          <button  class="btn btn-success">Checkout</button>
+      		
+			</form>
+        </div>
+    </div>
 
     </section>
-    <!-- End Content -->
+    <!-- End Content --
 
     <!-- Start Brands -->
     

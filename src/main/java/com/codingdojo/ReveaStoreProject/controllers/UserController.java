@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -68,23 +69,23 @@ public class UserController {
     }
     // ******************************************************************************
     
-    @RequestMapping("/login")
-    public String loginpage(@ModelAttribute("user") User user) {
-        return "registrationPage.jsp";
-    }
     
-    @PostMapping("/login")
-    public String login(Principal principal,HttpSession session,@ModelAttribute("user") User user,@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model,@RequestParam("username") String us) {
-    	session.setAttribute("user_id",(userService.findUser(us)).getId());
+    @RequestMapping("/login")
+    public String login(Principal principal,HttpSession session,@ModelAttribute("user") User user,@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
+    	if (principal != null) {
+    		session.setAttribute("user_id",userService.findByUsername(principal.getName()).getId());
+    		System.out.println();
+			return "redirect:/home";
+		}
     	if(error != null) {
             model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
         }
         if(logout != null) {
             model.addAttribute("logoutMessage", "Logout Successful!");
         }
-        String username=principal.getName();
-		session.setAttribute("user_id",userService.findByUsername(username).getId());
-        return "redirect:/home";
+        
+		
+        return "registrationPage.jsp";
     }
     
     
@@ -163,11 +164,17 @@ public class UserController {
     }
     @GetMapping("/logout")
     public String logoutS(HttpSession session) {
-    	session.invalidate();
+		SecurityContextHolder.clearContext();
+		session.invalidate();
     	return "redirect:/login";
     }
     @RequestMapping(value = {"/", "/home"})
     public String home(Principal principal, Model model,HttpSession session) {
+    	if (principal==null) {
+    		return "homePage.jsp";
+    	}
+        String username = principal.getName();
+    	session.setAttribute("user_id",userService.findByUsername(username).getId());
       	if( session.getAttribute("user_id")==null ) {
     		model.addAttribute("myUserId",false);
     		model.addAttribute("category1", userService.findCategoryById((long) 1));
@@ -198,7 +205,11 @@ public class UserController {
     }
     //cart route
     @RequestMapping("/cart")
-    public String cart(HttpSession session) {
+    public String cart(HttpSession session,Model model) {
+    	List<Cart> hisCarts=userService.cartProducts((Long) session.getAttribute("user_id"),false);
+    	model.addAttribute("carts",hisCarts);
+    	double tp=userService.cartTotalPrice(hisCarts);
+    	model.addAttribute("totalprice", tp);
         return "cartPage.jsp";
     }
     //checkout
@@ -232,11 +243,11 @@ public class UserController {
     	model.addAttribute("product",userService.findProductById(id));
     	return "productPage.jsp";
     }
-    @PostMapping("/cart/{id}")
+    @GetMapping("/cart/{id}")
     public String addToCartWithQuantity(@PathVariable("id") Long id,HttpSession session,@RequestParam("quantity") int quantity) {
     	Product addedProduct=userService.findProductById(id);
     	if(addedProduct.getAvailableQuantity()-quantity>=0) {
-    		userService.addToCart((Long) session.getAttribute("user_id"), id);
+    		userService.addToCartWithQuantity((Long) session.getAttribute("user_id"), id,quantity);
     		return "redirect:/products";
     	}
     	return "redirect:/products"+id;
@@ -244,6 +255,7 @@ public class UserController {
     @GetMapping("/cart1/{id}")
     public String addToCartWithQuantity(@PathVariable("id") Long id,HttpSession session) {
     	Product addedProduct=userService.findProductById(id);
+    	System.out.println(session.getAttribute("user_id"));    	
     	if(addedProduct.getAvailableQuantity()-1>=0) {
     		userService.addToCart((Long) session.getAttribute("user_id"), id);
     	}
@@ -256,5 +268,11 @@ public class UserController {
     	model.addAttribute("products",userService.allProducts());
     	model.addAttribute("categories",userService.allCategories());
 		return "ShopGrid.jsp";
+    }
+    @GetMapping("/cart/remove/{id}")
+    public String removeProductFromCart(@PathVariable("id") Long id,HttpSession session) {
+    	System.out.println("inside the controller");
+    	userService.removeProduuctFromCart((Long) session.getAttribute("user_id"),id);
+    	return "redirect:/cart";
     }
 }
