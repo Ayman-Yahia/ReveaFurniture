@@ -82,7 +82,7 @@
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
-								<li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+								<li><i class="ti-power-off"></i><a href="/login">Login</a></li>
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -157,12 +157,12 @@
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 
-										<a href="#">View Cart</a>
+										<a href="/cart">View Cart</a>
 									</div>
 									<ul class="shopping-list">
 										<li><a href="#" class="remove" title="Remove this item"><i
 												class="fa fa-remove"></i></a> <a class="cart-img" href="#"><img
-												src="https://via.placeholder.com/70x70" alt="#"></a>
+												src="images/bb.jpg" alt="#"></a>
 											<h4>
 												<a href="#">Gaming Chair</a>
 											</h4>
@@ -183,7 +183,7 @@
 										<div class="total">
 											<span>Total</span> <span class="total-amount">$899.99</span>
 										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
+										<a href="/checkout" class="btn animate">Checkout</a>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->
@@ -234,7 +234,7 @@
 	<!--/ End Header -->
 
 	<!-- Slider Area -->
-	<section class="hero-slider">
+	<section class="hero-slider" >
 		<!-- Single Slider -->
 		<div class="single-slider">
 			<div class="container">
@@ -282,8 +282,8 @@
 								<div class="single-product">
 									<div class="product-img">
 										<a href="product-details.html"> <img class="default-img"
-											src="resources/static/images/6.png" alt="#"> <img
-											class="hover-img" src="https://via.placeholder.com/550x750"
+											src="images/2.webp" alt="#"> <img
+											class="hover-img" src="images/2.webp"
 											alt="#">
 										</a>
 										<div class="button-head">
@@ -311,8 +311,8 @@
 								<div class="single-product">
 									<div class="product-img">
 										<a href="product-details.html"> <img class="default-img"
-											src="https://via.placeholder.com/550x750" alt="#"> <img
-											class="hover-img" src="https://via.placeholder.com/550x750"
+											src="images/2c.webp" alt="#"> <img
+											class="hover-img" src="images/2c.webp"
 											alt="#">
 										</a>
 										<div class="button-head">
@@ -340,8 +340,8 @@
 								<div class="single-product">
 									<div class="product-img">
 										<a href="product-details.html"> <img class="default-img"
-											src="https://via.placeholder.com/550x750" alt="#"> <img
-											class="hover-img" src="https://via.placeholder.com/550x750"
+											src="images/3c.webp" alt="#"> <img
+											class="hover-img" src="images/3c.webp"
 											alt="#">
 										</a>
 										<div class="button-head">
@@ -369,8 +369,8 @@
 								<div class="single-product">
 									<div class="product-img">
 										<a href="product-details.html"> <img class="default-img"
-											src="https://via.placeholder.com/550x750" alt="#"> <img
-											class="hover-img" src="https://via.placeholder.com/550x750"
+											src="images/3s.jpg" alt="#"> <img
+											class="hover-img" src="images/3s.jpg"
 											alt="#"> <span class="new">New</span>
 										</a>
 										<div class="button-head">

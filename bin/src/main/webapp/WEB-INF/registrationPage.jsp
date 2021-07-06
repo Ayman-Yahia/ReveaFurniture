@@ -23,7 +23,6 @@ $(document).ready(function(){
 }) 
 });
     </script>
-
 </head>
 <body>
 	<div class="cont">
