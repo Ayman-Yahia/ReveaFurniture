@@ -3,6 +3,7 @@ package com.codingdojo.ReveaStoreProject.controllers;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -42,31 +43,29 @@ public class UserController {
     
     // ******************************************************************************
     // This method is only commented when you want to comment out the following method
-//    @PostMapping("/registration")
-//    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model,HttpSession session) {
-//        userValidator.validate(user, result);
-//        if (result.hasErrors()) {
-//            return "registrationPage.jsp";
-//        }
-//        
-//        userService.saveWithUserRole(user);
-//    		session.setAttribute("user_id",user.getId());
-//        return "redirect:/login";
-//
-//    }
-    // ******************************************************************************
-    // ******************************************************************************
-     //This method is only commented out when you want to add an admin, and the previous method shall be commented 
     @PostMapping("/registration")
     public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model,HttpSession session) {
         userValidator.validate(user, result);
         if (result.hasErrors()) {
             return "registrationPage.jsp";
         }
-        userService.saveUserWithAdminRole(user);
-//		session.setAttribute("user_id",user.getId());
+        
+        userService.saveWithUserRole(user);
         return "redirect:/login";
+
     }
+    // ******************************************************************************
+    // ******************************************************************************
+     //This method is only commented out when you want to add an admin, and the previous method shall be commented 
+//    @PostMapping("/registration")
+//    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model,HttpSession session) {
+//        userValidator.validate(user, result);
+//        if (result.hasErrors()) {
+//            return "registrationPage.jsp";
+//        }
+//        userService.saveUserWithAdminRole(user);
+//        return "redirect:/login";
+//    }
     // ******************************************************************************
     
     
@@ -169,21 +168,20 @@ public class UserController {
     	return "redirect:/login";
     }
     @RequestMapping(value = {"/", "/home"})
-    public String home(Principal principal, Model model,HttpSession session) {
+    public String home(Principal principal, Model model,HttpSession session,HttpServletRequest request) {
     	if (principal==null) {
-    		return "homePage.jsp";
-    	}
-        String username = principal.getName();
-    	session.setAttribute("user_id",userService.findByUsername(username).getId());
-      	if( session.getAttribute("user_id")==null ) {
     		model.addAttribute("myUserId",false);
     		model.addAttribute("category1", userService.findCategoryById((long) 1));
             model.addAttribute("category2", userService.findCategoryById((long) 2));
             model.addAttribute("category3", userService.findCategoryById((long) 3));
-        	model.addAttribute("categories", userService.allCategories());
-
-            return "homePage.jsp";
-    	}else {
+    		return "homePage.jsp";
+    	}
+    	if (request.isUserInRole("ROLE_ADMIN")) {
+            return "redirect:/admin";
+        }
+        String username = principal.getName();
+    	session.setAttribute("user_id",userService.findByUsername(username).getId());
+    		model.addAttribute("user",userService.findByUsername(username));
     		model.addAttribute("myUserId",true);
     		User l=userService.findUserById(((Long)session.getAttribute("user_id")));
         	model.addAttribute("categories", userService.allCategories());
@@ -192,10 +190,8 @@ public class UserController {
             model.addAttribute("category1", userService.findCategoryById((long) 1));
             model.addAttribute("category2", userService.findCategoryById((long) 2));
             model.addAttribute("category3", userService.findCategoryById((long) 3));
-            model.addAttribute("size", myCarts.size());
-        	model.addAttribute("lo",true);
-            
-    	}
+            model.addAttribute("size", myCarts.size());            
+
         return "homePage.jsp";
     }
     @GetMapping("/admin/{id}/delete")
@@ -203,10 +199,27 @@ public class UserController {
     	userService.deleteProduct(id);
     	return "redirect:/admin";
     }
+    @GetMapping("/admin/charts")
+    public String showCharts(Model model) {
+    	Category cat=userService.findCategoryById((long) 1);
+    	model.addAttribute("q",cat);
+    	
+    	List<Product> categoryProducts=userService.qProducts(cat);
+    	model.addAttribute("qs", categoryProducts);
+    	return "adminChart.jsp";
+    }
     //cart route
     @RequestMapping("/cart")
-    public String cart(HttpSession session,Model model) {
+    public String cart(Principal principal,HttpSession session,Model model,HttpServletRequest request) {
+    	if (request.isUserInRole("ROLE_ADMIN")) {
+            return "redirect:/products";
+        }
+    	
     	List<Cart> hisCarts=userService.cartProducts((Long) session.getAttribute("user_id"),false);
+    	if (principal!=null) {
+    		model.addAttribute("size", hisCarts.size());
+    		model.addAttribute("myUserId",true);
+    	}
     	model.addAttribute("carts",hisCarts);
     	double tp=userService.cartTotalPrice(hisCarts);
     	model.addAttribute("totalprice", tp);
@@ -214,38 +227,70 @@ public class UserController {
     }
     //checkout
     @RequestMapping("/checkout")
-    public String checkout() {
+    public String checkout(Model model,Principal principal,HttpSession session,HttpServletRequest request) {
+    	if (request.isUserInRole("ROLE_ADMIN")) {
+            return "redirect:/products";
+        }
     	
+    	List<Cart> hisCarts=userService.cartProducts((Long) session.getAttribute("user_id"),false);
+
+    	if (principal!=null) {
+    		model.addAttribute("size", hisCarts.size());
+    		model.addAttribute("myUserId",true);
+    	}
         return "checkout.jsp";
     }
     @GetMapping("/products")
-    public String productsPage(Model model,HttpSession session) {
+    public String productsPage(Principal principal,Model model,HttpSession session) {
     	model.addAttribute("products",userService.allProducts());
     	model.addAttribute("categories",userService.allCategories());
+    	List<Cart> hisCarts=userService.cartProducts((Long) session.getAttribute("user_id"),false);
+    	if (principal!=null) {
+    		model.addAttribute("size", hisCarts.size());
+    		model.addAttribute("myUserId",true);
+    	}
     	return "ShopGrid.jsp";
     }
     @GetMapping("/products/sort")
-    public String sortProducts(Model model,HttpSession session) {
+    public String sortProducts(Principal principal,Model model,HttpSession session) {
     	model.addAttribute("products",userService.productsOrderdByPrice());
     	model.addAttribute("categories",userService.allCategories());
+    	List<Cart> hisCarts=userService.cartProducts((Long) session.getAttribute("user_id"),false);
+    	if (principal!=null) {
+    		model.addAttribute("size", hisCarts.size());
+    		model.addAttribute("myUserId",true);
+    	}
     	return "ShopGrid.jsp";
     }
     @GetMapping("/categories/{id}")
-    public String categoriesPage(Model model,HttpSession session,@PathVariable("id") Long id) {
+    public String categoriesPage(Principal principal,Model model,HttpSession session,@PathVariable("id") Long id) {
     	Category cat=userService.findCategoryById(id);
     	List<Product> myProducts=cat.getProducts();
     	model.addAttribute("categories",userService.allCategories());
     	model.addAttribute("products",myProducts);
     	model.addAttribute("category",cat);
+    	List<Cart> hisCarts=userService.cartProducts((Long) session.getAttribute("user_id"),false);
+    	if (principal!=null) {
+    		model.addAttribute("size", hisCarts.size());
+    		model.addAttribute("myUserId",true);
+    	}
     	return "categoryPage.jsp";
     }
     @GetMapping("/products/{id}")
-    public String productPage(@PathVariable("id") Long id,HttpSession session,Model model) {
+    public String productPage(Principal principal,@PathVariable("id") Long id,HttpSession session,Model model) {
     	model.addAttribute("product",userService.findProductById(id));
+    	List<Cart> hisCarts=userService.cartProducts((Long) session.getAttribute("user_id"),false);
+    	if (principal!=null) {
+    		model.addAttribute("size", hisCarts.size());
+    		model.addAttribute("myUserId",true);
+    	}
     	return "productPage.jsp";
     }
     @GetMapping("/cart/{id}")
-    public String addToCartWithQuantity(@PathVariable("id") Long id,HttpSession session,@RequestParam("quantity") int quantity) {
+    public String addToCartWithQuantity(HttpServletRequest request,@PathVariable("id") Long id,HttpSession session,@RequestParam("quantity") int quantity) {
+    	if (request.isUserInRole("ROLE_ADMIN")) {
+            return "redirect:/";
+        }
     	Product addedProduct=userService.findProductById(id);
     	if(addedProduct.getAvailableQuantity()-quantity>=0) {
     		userService.addToCartWithQuantity((Long) session.getAttribute("user_id"), id,quantity);
@@ -254,7 +299,10 @@ public class UserController {
     	return "redirect:/products"+id;
     }
     @GetMapping("/cart1/{id}")
-    public String addToCartWithQuantity(@PathVariable("id") Long id,HttpSession session) {
+    public String addToCartWithQuantity(HttpServletRequest request,@PathVariable("id") Long id,HttpSession session) {
+    	if (request.isUserInRole("ROLE_ADMIN")) {
+            return "redirect:/";
+        }
     	Product addedProduct=userService.findProductById(id);
     	System.out.println(session.getAttribute("user_id"));    	
     	if(addedProduct.getAvailableQuantity()-1>=0) {
@@ -266,19 +314,24 @@ public class UserController {
     public String searchFunctionality(Model model,@RequestParam("q") String search) {
     	List<Product> mProducts=userService.searchProduct(search);
     	model.addAttribute("products", mProducts);
-    	model.addAttribute("products",userService.allProducts());
     	model.addAttribute("categories",userService.allCategories());
 		return "ShopGrid.jsp";
     }
     @GetMapping("/cart/remove/{id}")
-    public String removeProductFromCart(@PathVariable("id") Long id,HttpSession session) {
+    public String removeProductFromCart(HttpServletRequest request,@PathVariable("id") Long id,HttpSession session) {
+    	if (request.isUserInRole("ROLE_ADMIN")) {
+            return "redirect:/";
+        }
     	System.out.println("inside the controller");
-    	userService.removeProduuctFromCart((Long) session.getAttribute("user_id"),id);
+    	userService.removeProduuctFromCart(id);
     	return "redirect:/cart";
     }
     
     @GetMapping("/thankyou")
-    public String thanks() {
+    public String thanks(HttpSession session) {
+    	List<Cart> hisCarts=userService.cartProducts((Long) session.getAttribute("user_id"),false);
+
+    	userService.checkoutCart(hisCarts);
     	return"thankyou.jsp";
     }
     

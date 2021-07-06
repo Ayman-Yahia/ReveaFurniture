@@ -40,18 +40,17 @@ $(document).ready(function(){
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 				<button class="submit" type="submit">Sign In</button>
-				<p class="forgot-pass">Forgot Password ?</p>
 
 			</div>
 		</form>
 		
 		<div>
-		<p>
-			<form:errors path="user.*" />
-		</p>
+		
 		<form:form method="POST" action="/registration" modelAttribute="user">
 		
-
+			<p>
+			<form:errors path="user.*" />
+		   </p>
 			<div class="sub-cont">
 				<div class="img">
 					<div class="img-text m-up">

@@ -14,9 +14,6 @@
       padding: 10px;
       }
 
-      .fa-trash-o{
-      color: #dc3545;
-      }
       .effects{
       border: 1px solid #fff;
       background: #fff;
@@ -64,19 +61,11 @@
       padding-top: 10px;
       font-size: 20px;
       }
-      .fa{
-      padding: 5px;
-     
-      }
+
       img{
       width: 45%;
       }
-      h5{
-      font-size: 14px;
-      }
-      h3{
-      font-size: 15px;
-      }
+
       .color-group{
       padding-top: 10px;
       padding-bottom: 10px;

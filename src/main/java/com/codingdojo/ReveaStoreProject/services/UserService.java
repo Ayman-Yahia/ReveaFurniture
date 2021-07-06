@@ -140,10 +140,9 @@ public class UserService {
 			cartRepository.save(addCart);
 		}		
 	}
-	public void removeProduuctFromCart(Long user,Long product) {
-System.out.println("inside the service");
-		Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,false);
-		cartRepository.deleteById(m.getId());
+	public void removeProduuctFromCart(Long cartId) {
+		
+		cartRepository.deleteById(cartId);
 		
 	}
 	public void checkoutProducts() {
@@ -155,10 +154,17 @@ System.out.println("inside the service");
 	public double cartTotalPrice(List<Cart> m) {
 		double totalPrice=0;
 		for (int i = 0; i < m.size(); i++) {
-			Cart c=m.get(i);
-			totalPrice+=c.getTotalPrice();
+//			Cart c=m.get(i);
+			totalPrice+=(m.get(i).getTotalPrice())*m.get(i).getQuantity();
 		}
 		return totalPrice;
+	}
+	public void checkoutCart(List<Cart> m) {
+		
+		for (int i = 0; i < m.size(); i++) {
+			m.get(i).setOrdered(true);
+			cartRepository.save(m.get(i));
+		}
 	}
 	public List<Product> allProducts(){
 		return productRepository.findAll();
@@ -175,6 +181,9 @@ System.out.println("inside the service");
 
 	public List<Product> searchProduct(String title) {
 		return productRepository.findByNameContaining(title);
+	}
+	public List<Product> qProducts(Category name){
+		return productRepository.findByCategory(name);
 	}
 
 }

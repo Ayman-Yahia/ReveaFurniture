@@ -62,18 +62,11 @@
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
-                        </li>
+ 
                         <li class="nav-item">
                             <a class="nav-link" href="/products">Shop</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contact</a>
-                        </li>
+
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -88,10 +81,28 @@
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="/cart">
+                    <c:choose>
+					<c:when test="${myUserId}">
+						<a class="nav-icon position-relative text-decoration-none" href="/cart">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"><c:out value="${size}"></c:out></span>
-                    </a>
+                    	</a>
+	                    <a class="nav-icon position-relative text-decoration-none" href="/">
+	                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+	                        <a href="/logout" style="text-decoration:none">Logout</a>
+	                    </a>					
+                    </c:when>
+                    <c:otherwise>
+
+						<a class="nav-icon position-relative text-decoration-none" href="/">
+	                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+	                        <a href="/login" style="text-decoration:none">Login</a>
+	                    </a>
+
+				</c:otherwise>
+				
+				</c:choose>
+                    
    
                 </div>
             </div>

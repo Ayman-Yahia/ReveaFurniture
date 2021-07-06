@@ -46,7 +46,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
         <div class="container" >
-        <h1 class="jumbotron-heading">Chart</h1>
+        <h1 class="jumbotron-heading"> Chart for Category <c:out value="${q.name}"/></h1>
    
         </div>
 			
@@ -80,12 +80,12 @@
 
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-				[ 'product', 'Sales' ], [ 'bed', 1000],
-				[ 'table', 400 ], [ 'ball', 600 ],
-				[ 'pc', 1000 ] ]);
+
+			"<c:forEach items="${qs}" var="q">" [ "<c:out value="${q.name}"/>", "<c:out value="${q.availableQuantity}"/>" ], 
+			"</c:forEach>"]);
 
 		var options = {
-			title : 'Company Performance',
+			title : 'Category Performance',
 			curveType : 'function',
 			legend : {
 				position : 'bottom'
