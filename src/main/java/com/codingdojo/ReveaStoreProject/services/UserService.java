@@ -35,7 +35,15 @@ public class UserService {
 		this.productRepository=productRepository;
 		this.categoryRepository=categoryRepository;
 	}
-
+	public User findUserById(Long id) {
+    	Optional<User> user = userRepository.findById(id);
+    	if(user.isPresent()) {
+            return user.get();
+    	}
+    	else {
+    	    return null;
+    	}
+    }
 	public void saveWithUserRole(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setRoles(roleRepository.findByName("ROLE_USER"));
@@ -53,6 +61,9 @@ public class UserService {
 	}
 	public List<User> allUsers(){
 		return userRepository.findAll();
+	}
+	public List<Product> sortProducts(){
+		return productRepository.findByOrderByPriceAsc();
 	}
 	 public Product createProduct(Product b) {
 	        return productRepository.save(b);
@@ -92,20 +103,18 @@ public class UserService {
 //	//cart
 	public void addToCart( Long user,Long product){
 		Product mProduct=productRepository.findById(product).orElse(null);
-		if((mProduct.getAvailableQuantity()-1)>=0) {
-			Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,true);
-			if (m!=null) {
-				int s=m.getQuantity();
-				m.setQuantity(s+1);
-				cartRepository.save(m);
+		Cart m=cartRepository.getCartWhereIdAndUserAndNotOrederd(product,user,true);
+		if (m!=null) {
+			int s=m.getQuantity();
+			m.setQuantity(s+1);
+			cartRepository.save(m);
 
-			}else {
-				User mUser=userRepository.findById(user).orElse(null);
-				mProduct.setAvailableQuantity(mProduct.getAvailableQuantity()-1);
-				productRepository.save(mProduct);
-				Cart addCart=new Cart(mProduct.getPrice(),1,true,mUser,mProduct);
-				cartRepository.save(addCart);
-			}
+		}else {
+			User mUser=userRepository.findById(user).orElse(null);
+			mProduct.setAvailableQuantity(mProduct.getAvailableQuantity()-1);
+			productRepository.save(mProduct);
+			Cart addCart=new Cart(mProduct.getPrice(),1,false,mUser,mProduct);
+			cartRepository.save(addCart);
 		}
 		
 		
@@ -134,6 +143,17 @@ public class UserService {
 		cartRepository.deleteById(m.getId());
 		
 	}
+	public List<Cart> cartProducts(Long userId,boolean m){
+		return cartRepository.findByUser_IdAndOrdered(userId,m);
+	}
+	public double cartTotalPrice(List<Cart> m) {
+		double totalPrice=0;
+		for (int i = 0; i < m.size(); i++) {
+			Cart c=m.get(i);
+			totalPrice+=c.getTotalPrice();
+		}
+		return totalPrice;
+	}
 	public List<Product> allProducts(){
 		return productRepository.findAll();
 	}
@@ -146,4 +166,11 @@ public class UserService {
 	public List<Product> productsOrderdByPrice(){
 		return productRepository.findByOrderByPriceAsc();
 	}
+	public User findUser(String us) {
+		return userRepository.findByUsername(us);
+	}
+	public List<Product> searchProduct(String title) {
+		return productRepository.findByNameContaining(title);
+	}
+
 }

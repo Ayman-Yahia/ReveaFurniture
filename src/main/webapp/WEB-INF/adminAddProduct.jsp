@@ -70,7 +70,7 @@
 					</label> 
 					</div>
 						<div class="row">
-						<label> <span>Image</span> <form:input class="form-control"
+						<label> <span>Image URL</span> <form:input class="form-control"
 							type="text" path="image" />
 					</label>
 					</div>

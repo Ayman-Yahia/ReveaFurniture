@@ -7,7 +7,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<title>Revea Store</title>
+<title>How to Design Login & Registration Form Transition</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -23,6 +23,7 @@ $(document).ready(function(){
 }) 
 });
     </script>
+
 </head>
 <body>
 	<div class="cont">

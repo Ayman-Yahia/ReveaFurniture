@@ -12,5 +12,6 @@ public interface ProductRepository extends CrudRepository<Product, Long>{
 	List<Product> findAll();
 	List<Product> findByCategory (Category category);
 	List<Product> findByOrderByPriceAsc();
+	List<Product> findByNameContaining(String search);
 
 }

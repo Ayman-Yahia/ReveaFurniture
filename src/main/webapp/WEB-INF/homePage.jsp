@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -10,527 +12,299 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Title Tag  -->
 <title>Revea Store</title>
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="images/favicon.png">
-<!-- Web Font -->
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
-	rel="stylesheet">
+<link rel="apple-touch-icon" href="images/apple-icon.png">
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
-<!-- StyleSheet -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/templatemo.css">
+<link rel="stylesheet" href="css/custom.css">
 
-<!-- Bootstrap -->
-<link rel="stylesheet" href="css/bootstrap.css">
-<!-- Magnific Popup -->
-<link rel="stylesheet" href="css/magnific-popup.min.css">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="css/font-awesome.css">
-<!-- Fancybox -->
-<link rel="stylesheet" href="css/jquery.fancybox.min.css">
-<!-- Themify Icons -->
-<link rel="stylesheet" href="css/themify-icons.css">
-<!-- Nice Select CSS -->
-<link rel="stylesheet" href="css/niceselect.css">
-<!-- Animate CSS -->
-<link rel="stylesheet" href="css/animate.css">
-<!-- Flex Slider CSS -->
-<link rel="stylesheet" href="css/flex-slider.min.css">
-<!-- Owl Carousel -->
-<link rel="stylesheet" href="css/owl-carousel.css">
-<!-- Slicknav -->
-<link rel="stylesheet" href="css/slicknav.min.css">
-
-<!-- Eshop StyleSheet -->
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="css/responsive.css">
-
-<link rel="stylesheet" type="text/css" href="css/index.css">
-
+<!-- Load fonts style after rendering the layout styles -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="css/fontawesome.min.css">
 
 </head>
 <body class="js">
-
-	<!-- Preloader -->
-	<div class="preloader">
-		<div class="preloader-inner">
-			<div class="preloader-icon">
-				<span></span> <span></span>
-			</div>
-		</div>
-	</div>
-	<!-- End Preloader -->
-
-
-	<!-- Header -->
-	<header class="header shop">
-		<!-- Topbar -->
-		<div class="topbar">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4 col-md-12 col-12">
-						<!-- Top Left -->
-						<div class="top-left">
-							<ul class="list-main">
-								<li><i class="ti-headphone-alt"></i> +970 599999999</li>
-								<li><i class="ti-email"></i> support@revea.com</li>
-							</ul>
-						</div>
-						<!--/ End Top Left -->
-					</div>
-					<div class="col-lg-8 col-md-12 col-12">
-						<!-- Top Right -->
-						<div class="right-content">
-							<ul class="list-main">
-								<li><i class="ti-power-off"></i><a href="/login">Login</a></li>
-							</ul>
-						</div>
-						<!-- End Top Right -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Topbar -->
-		<div class="middle-inner">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-2 col-md-2 col-12">
-						<!-- Logo -->
-						<div class="logo">
-							<a href="index.html"><img src="images/logo.png" alt="logo"></a>
-						</div>
-						<!--/ End Logo -->
-						<!-- Search Form -->
-						<div class="search-top">
-							<div class="top-search">
-								<a href="#0"><i class="ti-search"></i></a>
-							</div>
-							<!-- Search Form -->
-							<div class="search-top">
-								<form class="search-form">
-									<input type="text" placeholder="Search here..." name="search">
-									<button value="search" type="submit">
-										<i class="ti-search"></i>
-									</button>
-								</form>
-							</div>
-							<!--/ End Search Form -->
-						</div>
-						<!--/ End Search Form -->
-						<div class="mobile-nav"></div>
-					</div>
-					<div class="col-lg-8 col-md-7 col-12">
-						<div class="search-bar-top">
-							<div class="search-bar">
-								<select>
-									<option selected="selected">All Category</option>
-									<option>Sofas</option>
-									<option>Gaming Room</option>
-									<option>Beds</option>
-
-								</select>
-								<form>
-									<input name="search" placeholder="Search Products Here....."
-										type="search">
-									<button class="btnn">
-										<i class="ti-search"></i>
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-3 col-12">
-						<div class="right-bar">
-							<!-- Search Form -->
-							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-heart-o"
-									aria-hidden="true"></i></a>
-							</div>
-							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i
-									class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-							</div>
-							<div class="sinlge-bar shopping">
-								<a href="#" class="single-icon"><i class="ti-bag"></i> <span
-									class="total-count">2</span></a>
-								<!-- Shopping Item -->
-								<div class="shopping-item">
-									<div class="dropdown-cart-header">
-
-										<a href="/cart">View Cart</a>
-									</div>
-									<ul class="shopping-list">
-										<li><a href="#" class="remove" title="Remove this item"><i
-												class="fa fa-remove"></i></a> <a class="cart-img" href="#"><img
-												src="images/bb.jpg" alt="#"></a>
-											<h4>
-												<a href="#">Gaming Chair</a>
-											</h4>
-											<p class="quantity">
-												1x - <span class="amount">$399.99</span>
-											</p></li>
-										<li><a href="#" class="remove" title="Remove this item"><i
-												class="fa fa-remove"></i></a> <a class="cart-img" href="#"><img
-												src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4>
-												<a href="#">Dining Table </a>
-											</h4>
-											<p class="quantity">
-												1x - <span class="amount">$500.00</span>
-											</p></li>
-									</ul>
-									<div class="bottom">
-										<div class="total">
-											<span>Total</span> <span class="total-amount">$899.99</span>
-										</div>
-										<a href="/checkout" class="btn animate">Checkout</a>
-									</div>
-								</div>
-								<!--/ End Shopping Item -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Header Inner -->
-		<div class="header-inner">
-			<div class="container">
-				<div class="cat-nav-head">
-					<div class="row">
-						<div class="col-lg-3">
-							<div class="all-category">
-								<h3 class="cat-heading">
-									<i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES
-								</h3>
-								<ul class="main-category">
+	<!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@revea.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                </div>
+                <div>
+                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Top Nav -->
 
 
-									<li><a href="#">Sofas</a></li>
-									<li><a href="#">Gaming Room</a></li>
-									<li><a href="#">Beds</a></li>
-									<li><a href="#">Dining Tables</a></li>
-									<li><a href="#">Chairs</a></li>
-									<li><a href="#">TV Stands</a></li>
-									<li><a href="#">Bookcases</a></li>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="/">
+                Revea
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                            <div class="input-group-text">
+                                <i class="fa fa-fw fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
+                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                    </a>
+                    <a class="nav-icon position-relative text-decoration-none" href="/cart">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"><c:out value="${size}"></c:out></span>
+                    </a>
+   
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Close Header -->
+
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/search" method="POST" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Start Banner Hero -->
+    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="./img/banner_img_01.jpg" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left align-self-center">
+                                <h1 class="h1"><b>Revea</b> </h1>                                <p>
+                                    " Your home should be a story of who you are, and be a
+											collection of what you love."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="/img/banner_img_02.jpg" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1">Proident occaecat</h1>
+                                <h3 class="h2">Aliquip ex ea commodo consequat</h3>
+                                <p>
+                                    You are permitted to use this Zay CSS template for your commercial websites. 
+                                    You are <strong>not permitted</strong> to re-distribute the template ZIP file in any kind of template collection websites.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="/img/banner_img_03.jpg" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1">Repr in voluptate</h1>
+                                <h3 class="h2">Ullamco laboris nisi ut </h3>
+                                <p>
+                                    We bring you 100% free CSS templates for your websites. 
+                                    If you wish to support TemplateMo, please make a small contribution via PayPal or tell your friends about our website. Thank you.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    </div>
+    <!-- End Banner Hero -->
 
 
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-9 col-12">
-							<div class="menu-area">
-								<!-- Main Menu -->
-
-								<!--/ End Main Menu -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--/ End Header Inner -->
-	</header>
-	<!--/ End Header -->
-
-	<!-- Slider Area -->
-	<section class="hero-slider" >
-		<!-- Single Slider -->
-		<div class="single-slider">
-			<div class="container">
-				<div class="row no-gutters">
-					<div class="col-lg-9 offset-lg-3 col-12">
-						<div class="text-inner">
-							<div class="row">
-								<div class="col-lg-7 col-12">
-									<div class="hero-text">
-										<h1>Revea Store</h1>
-										<p>" Your home should be a story of who you are, and be a
-											collection of what you love."</p>
-										<div class="button"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--/ End Single Slider -->
-	</section>
-	<!--/ End Slider Area -->
-
-	<!-- End Small Banner -->
-
-	<!-- Start Product Area -->
-	<div class="product-area section">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="section-title">
-						<h2>Trending Items</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="tab-content" id="myTabContent">
-				<!-- Start Single Tab -->
-				<div class="tab-pane fade show active" id="man" role="tabpanel">
-					<div class="tab-single">
-						<div class="row">
-							<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-details.html"> <img class="default-img"
-											src="images/2.webp" alt="#"> <img
-											class="hover-img" src="images/2.webp"
-											alt="#">
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal"
-													title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick
-														Shop</span></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3>
-											<a href="product-details.html">Low Profile Platform Bed</a>
-										</h3>
-										<div class="product-price">
-											<span>$300</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-details.html"> <img class="default-img"
-											src="images/2c.webp" alt="#"> <img
-											class="hover-img" src="images/2c.webp"
-											alt="#">
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal"
-													title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick
-														Shop</span></a> 
-											</div>
-											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3>
-											<a href="product-details.html">PC & Racing Game Chair</a>
-										</h3>
-										<div class="product-price">
-											<span>$200</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-details.html"> <img class="default-img"
-											src="images/3c.webp" alt="#"> <img
-											class="hover-img" src="images/3c.webp"
-											alt="#">
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal"
-													title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick
-														Shop</span></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3>
-											<a href="product-details.html">Basketball Hoop</a>
-										</h3>
-										<div class="product-price">
-											<span>$600</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-details.html"> <img class="default-img"
-											src="images/3s.jpg" alt="#"> <img
-											class="hover-img" src="images/3s.jpg"
-											alt="#"> <span class="new">New</span>
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal"
-													title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick
-														Shop</span></a> 
-											</div>
-											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3>
-											<a href="product-details.html">Linen Arm Sofa</a>
-										</h3>
-										<div class="product-price">
-											<span>$729.99</span>
-										</div>
-									</div>
-								</div>
-							</div>
+    <!-- Start Categories of The Month -->
+    <section class="container py-5">
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Categories Of The Month</h1>
+     
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="#"><img src="./assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
+                <h5 class="text-center mt-3 mb-3"><c:out value="${category1.name}"/></h5>
+                <p class="text-center"><a class="btn btn-success" href="/categories/${category1.id}">Go Shop</a></p>
+            </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="#"><img src="./assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3"><c:out value="${category2.name}"/></h2>
+                <p class="text-center"><a class="btn btn-success" href="/categories/${category2.id}">Go Shop</a></p>
+            </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="#"><img src="./assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3"><c:out value="${category3.name}"/></h2>
+                <p class="text-center"><a class="btn btn-success" href="/categories/${category3.id}">Go Shop</a></p>
+            </div>
+        </div>
+    </section>
+    <!-- End Categories of The Month -->
 
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    
+    <!-- End Featured Product -->
 
-	<!-- Modal end -->
 
-	<!-- Start Footer Area -->
-	<footer class="footer">
-		<!-- Footer Top -->
-		<div class="footer-top section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-5 col-md-6 col-12">
-						<!-- Single Widget -->
-						<div class="single-footer about">
-							<div class="logo">
-								<a href="index.html"><img src="images/logo2.png" alt="#"></a>
-							</div>
-							<p class="text">A well planned home always needs well
-								designed furniture.</p>
-							<p class="call">
-								<span><a href="tel:123456789">Revea Store</a></span>
-							</p>
-						</div>
-						<!-- End Single Widget -->
-					</div>
-					<div class="col-lg-2 col-md-6 col-12">
-						<!-- Single Widget -->
-						<div class="single-footer links">
-							<h4>Information</h4>
-							<ul>
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Faq</a></li>
-								<li><a href="#">Terms & Conditions</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Help</a></li>
-							</ul>
-						</div>
-						<!-- End Single Widget -->
-					</div>
-					<div class="col-lg-2 col-md-6 col-12">
-						<!-- Single Widget -->
-						<div class="single-footer links">
-							<h4>Customer Service</h4>
-							<ul>
-								<li><a href="#">Payment Methods</a></li>
-								<li><a href="#">Money-back</a></li>
-								<li><a href="#">Returns</a></li>
-								<li><a href="#">Shipping</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-							</ul>
-						</div>
-						<!-- End Single Widget -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Single Widget -->
-						<div class="single-footer social">
-							<h4>Get In Tuch</h4>
-							<!-- Single Widget -->
-							<div class="contact">
-								<ul>
-									<li>Ramallah</li>
-									<li>info@revea.com</li>
-									<li>+970 599999999</li>
-								</ul>
-							</div>
-							<!-- End Single Widget -->
-							<ul>
-								<li><a href="#"><i class="ti-facebook"></i></a></li>
-								<li><a href="#"><i class="ti-twitter"></i></a></li>
-								<li><a href="#"><i class="ti-flickr"></i></a></li>
-								<li><a href="#"><i class="ti-instagram"></i></a></li>
-							</ul>
-						</div>
-						<!-- End Single Widget -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Footer Top -->
-		<div class="copyright">
-			<div class="container">
-				<div class="inner">
-					<div class="row">
-						<div class="col-lg-6 col-12">
-							<div class="left">
-								<p>Copyright © 2021 - All Rights Reserved.</p>
-							</div>
-						</div>
-						<div class="col-lg-6 col-12">
-							<div class="right">
-								<img src="images/payments.png" alt="#">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- /End Footer Area -->
+    <!-- Start Footer -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
 
-	<!-- Jquery -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.0.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<!-- Popper JS -->
-	<script src="js/popper.min.js"></script>
-	<!-- Bootstrap JS -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Color JS -->
-	<script src="js/colors.js"></script>
-	<!-- Slicknav JS -->
-	<script src="js/slicknav.min.js"></script>
-	<!-- Owl Carousel JS -->
-	<script src="js/owl-carousel.js"></script>
-	<!-- Magnific Popup JS -->
-	<script src="js/magnific-popup.js"></script>
-	<!-- Waypoints JS -->
-	<script src="js/waypoints.min.js"></script>
-	<!-- Countdown JS -->
-	<script src="js/finalcountdown.min.js"></script>
-	<!-- Nice Select JS -->
-	<script src="js/nicesellect.js"></script>
-	<!-- Flex Slider JS -->
-	<script src="js/flex-slider.js"></script>
-	<!-- ScrollUp JS -->
-	<script src="js/scrollup.js"></script>
-	<!-- Onepage Nav JS -->
-	<script src="js/onepage-nav.min.js"></script>
-	<!-- Easing JS -->
-	<script src="js/easing.js"></script>
-	<!-- Active JS -->
-	<script src="js/active.js"></script>
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Revea Shop</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            Jenin,Palestine
+                        </li>
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            <a class="text-decoration-none" href="/">010-020-0340</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope fa-fw"></i>
+                            <a class="text-decoration-none" href="/">info@revea.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+               
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="/">Home</a></li>
+                        <li><a class="text-decoration-none" href="/about">About Us</a></li>
+                        <li><a class="text-decoration-none" href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="row text-light mb-4">
+                <div class="col-12 mb-3">
+                    <div class="w-100 my-3 border-top border-light"></div>
+                </div>
+                <div class="col-auto me-auto">
+                    <ul class="list-inline text-left footer-icons">
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="w-100 bg-black py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left text-light">
+                            Copyright &copy; 2021 REVEA 
+                           
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Start Script -->
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/templatemo.js"></script>
+    <script src="/js/custom.js"></script>
+    <!-- End Script -->
 </body>
 </html>

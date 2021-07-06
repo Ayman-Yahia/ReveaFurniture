@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.codingdojo.ReveaStoreProject.models.Product;
 import com.codingdojo.ReveaStoreProject.models.User;
 
 @Repository
