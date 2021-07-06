@@ -90,11 +90,11 @@ button{
   text-transform: uppercase;
   font-weight: 600;
   font-family: 'Nunito', sans-serif;
-  background: -webkit-linear-gradient(left, #FFA500 , #FFC966 );
+  background: -webkit-linear-gradient(left, #59ab6e , #8ec69c );
 }
 
 .submit:hover{
-  background: -webkit-linear-gradient(left, #FFC966 , #FFA500);
+  background: -webkit-linear-gradient(left, #8ec69c , #59ab6e);
 }
 
 .forgot-pass{
@@ -168,7 +168,7 @@ button{
   top: 0;
   width: 900px;
   height: 100%;
-  background-image: url("logo.jpg");
+  background-image: url("/images/background41.jpg");
   background-size: cover;
   transition: -webkit-transform 1.2s ease-in-out;
   transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;

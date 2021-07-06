@@ -129,7 +129,7 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./img/banner_img_01.jpg" alt="">
+                            <img class="img-fluid" src="/images/s1.jpg" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
@@ -145,15 +145,13 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="/img/banner_img_02.jpg" alt="">
+                            <img class="img-fluid" src="/images/s2.jpg" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">Proident occaecat</h1>
-                                <h3 class="h2">Aliquip ex ea commodo consequat</h3>
+                                <h1 class="h1"><b>Revea</b> </h1>                                <p>
                                 <p>
-                                    You are permitted to use this Zay CSS template for your commercial websites. 
-                                    You are <strong>not permitted</strong> to re-distribute the template ZIP file in any kind of template collection websites.
+                                   Fill your home without emptying the wallet.
                                 </p>
                             </div>
                         </div>
@@ -164,15 +162,13 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="/img/banner_img_03.jpg" alt="">
+                            <img class="img-fluid" src="/images/s3.jpg" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">Repr in voluptate</h1>
-                                <h3 class="h2">Ullamco laboris nisi ut </h3>
+                                <h1 class="h1"><b>Revea</b> </h1>                                <p>
                                 <p>
-                                    We bring you 100% free CSS templates for your websites. 
-                                    If you wish to support TemplateMo, please make a small contribution via PayPal or tell your friends about our website. Thank you.
+                                    Choose different, choose US.
                                 </p>
                             </div>
                         </div>
@@ -180,6 +176,8 @@
                 </div>
             </div>
         </div>
+        <br>
+        
         <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
             <i class="fas fa-chevron-left"></i>
         </a>
