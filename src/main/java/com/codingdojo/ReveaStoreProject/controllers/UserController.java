@@ -2,12 +2,14 @@ package com.codingdojo.ReveaStoreProject.controllers;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,6 +29,7 @@ import com.codingdojo.ReveaStoreProject.validator.UserValidator;
 public class UserController {
 	private UserService userService;
     private UserValidator userValidator;
+
     
     public UserController(UserService userService,UserValidator userValidator) {
         this.userService = userService;
@@ -181,4 +184,15 @@ public class UserController {
     public String checkout() {
         return "checkout.jsp";
     }
-}
+    //chart
+  
+    @GetMapping("admin/charts")
+    public String chart(Principal principal,Model model) {
+        String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+    	return "adminChart.jsp";}
+      
+    }
+
+	
+
