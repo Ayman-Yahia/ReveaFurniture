@@ -257,4 +257,11 @@ public class UserController {
     	model.addAttribute("categories",userService.allCategories());
 		return "ShopGrid.jsp";
     }
-}
+    @GetMapping("admin/charts")
+    public String chart(Principal principal,Model model) {
+        String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+        return "adminChart.jsp";}
+      
+    }
+
