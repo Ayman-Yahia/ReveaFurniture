@@ -214,7 +214,8 @@ public class UserController {
     }
     //checkout
     @RequestMapping("/checkout")
-    public String checkout(HttpSession session) {
+    public String checkout() {
+    	
         return "checkout.jsp";
     }
     @GetMapping("/products")
@@ -275,4 +276,11 @@ public class UserController {
     	userService.removeProduuctFromCart((Long) session.getAttribute("user_id"),id);
     	return "redirect:/cart";
     }
+    
+    @GetMapping("/thankyou")
+    public String thanks() {
+    	return"thankyou.jsp";
+    }
+    
+    
 }
