@@ -335,5 +335,11 @@ public class UserController {
     	return"thankyou.jsp";
     }
     
+    @GetMapping("/contact")
+    public String contact () {
+
+    	return"contact.jsp";
+    }
+    
     
 }
