@@ -222,7 +222,9 @@ public class UserController {
     public String categoriesPage(Model model,HttpSession session,@PathVariable("id") Long id) {
     	Category cat=userService.findCategoryById(id);
     	List<Product> myProducts=cat.getProducts();
+    	model.addAttribute("categories",userService.allCategories());
     	model.addAttribute("products",myProducts);
+    	model.addAttribute("category",cat);
     	return "categoryPage.jsp";
     }
     @GetMapping("/products/{id}")
