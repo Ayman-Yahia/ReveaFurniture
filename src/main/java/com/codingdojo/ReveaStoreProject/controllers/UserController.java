@@ -200,7 +200,9 @@ public class UserController {
     	return "redirect:/admin";
     }
     @GetMapping("/admin/charts")
-    public String showCharts(Model model) {
+    public String showCharts(Model model,Principal principal) {
+    	String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
     	Category cat=userService.findCategoryById((long) 1);
     	model.addAttribute("q",cat);
     	
@@ -346,9 +348,6 @@ public class UserController {
 
     	return"about.jsp";
     }
-    @RequestMapping("/admin/charts")
-    public String charts() {
-    	return"adminCharrt.jsp";
-    }
+  
     
 }

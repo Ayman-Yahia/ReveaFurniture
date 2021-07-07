@@ -55,6 +55,7 @@
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
+      
     </tr>
   </thead>
   <tbody>
