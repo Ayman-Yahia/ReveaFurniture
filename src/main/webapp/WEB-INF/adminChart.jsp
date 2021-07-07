@@ -80,18 +80,16 @@
 
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-
-			"<c:forEach items="${qs}" var="q">" [ "<c:out value="${q.name}"/>", "<c:out value="${q.availableQuantity}"/>" ], 
-			"</c:forEach>"]);
+				[ 'product', 'Sales' ], [ 'beds', 200],
+				[ 'tables', 400 ], [ 'tables', 650 ] ]);
 
 		var options = {
-			title : 'Category Performance',
+			title : 'Company Performance',
 			curveType : 'function',
 			legend : {
 				position : 'bottom'
 			}
 		};
-
 		var chart = new google.visualization.LineChart(document
 				.getElementById('curve_chart'));
 

@@ -336,15 +336,19 @@ public class UserController {
     }
     
     @GetMapping("/contact")
-    public String contact () {
+    public String contact() {
 
     	return"contact.jsp";
     }
     
     @GetMapping("/about")
-    public String about () {
+    public String about() {
 
     	return"about.jsp";
+    }
+    @RequestMapping("/admin/charts")
+    public String charts() {
+    	return"adminCharrt.jsp";
     }
     
 }

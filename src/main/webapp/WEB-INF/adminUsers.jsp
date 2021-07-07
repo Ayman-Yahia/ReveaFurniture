@@ -46,7 +46,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1>Products</h1>
+                <h1>Users</h1>
    
 
 <table class="table">
