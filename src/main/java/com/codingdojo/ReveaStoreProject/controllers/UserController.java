@@ -341,5 +341,10 @@ public class UserController {
     	return"contact.jsp";
     }
     
+    @GetMapping("/about")
+    public String about () {
+
+    	return"about.jsp";
+    }
     
 }
