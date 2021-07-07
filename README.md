@@ -16,7 +16,7 @@ Thus the online furniture shopping project brings an entire furniture shop onlin
   <h3>Main Features:</h3>
 <b>Log in & Registration( /registration)</b>
 This page will enable us for login to the user account if he is already registered in the site before or to register if he is new user. It will contain filling for some of the personal information for the user such as first & last name, email & password.<br><br>
-url(https://www.linkpicture.com/q/logreg.png)
+  ![Alt text](https://www.linkpicture.com/q/logreg.png)
   ![](images/logreg.png)
 
   <b>The main page( /home)</b>
