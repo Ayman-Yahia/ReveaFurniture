@@ -54,7 +54,7 @@ will display all Furniture categories, each category will lead you to a page wit
   <b>Chart Page( /admin/charts)</b>
   Displays visual reports such as sales of each category.<br><br>  
   
-Authors:
+Authors:<br>
 Ayman Yahia<br>
 Reem Ismail<br>
 Malak Akkas<br>
