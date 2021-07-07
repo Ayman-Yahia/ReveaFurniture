@@ -1,4 +1,4 @@
-Revea Furniture
+<h1>Revea Furniture</h1>
 
 AXSOS Java Spring Project
 
@@ -9,6 +9,10 @@ The user may browse through these products as per categories. If the user likes 
 Thus the online furniture shopping project brings an entire furniture shop online and makes it easy for both buyer and seller to make furniture deals.
 
 Main Features:
-The main page will display all Furniture categories, each category will lead you to a page with a list of all books with the same category.
+Log in & Registration(/registration)
+This page will enable us for login to the user account if he is already registered in the site before or to register if he is new user. It will contain filling for some of the personal information for the user such as first & last name, email & password.
+
+The main page(/home)
+will display all Furniture categories, each category will lead you to a page with a list of all books with the same category.
 
 
