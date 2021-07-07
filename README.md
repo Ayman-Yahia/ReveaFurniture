@@ -55,8 +55,8 @@ will display all Furniture categories, each category will lead you to a page wit
   Displays visual reports such as sales of each category.<br><br>  
   
 Authors:
-Ayman Yahia
-Reem Ismail
-Malak Akkas
+Ayman Yahia<br>
+Reem Ismail<br>
+Malak Akkas<br>
   
 
