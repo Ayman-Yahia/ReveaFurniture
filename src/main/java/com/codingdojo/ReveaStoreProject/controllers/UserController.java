@@ -348,6 +348,4 @@ public class UserController {
 
     	return"about.jsp";
     }
-  
-    
 }
