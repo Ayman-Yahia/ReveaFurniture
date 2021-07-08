@@ -203,11 +203,14 @@ public class UserController {
     public String showCharts(Model model,Principal principal) {
     	String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
-    	Category cat=userService.findCategoryById((long) 1);
-    	model.addAttribute("q",cat);
+    	Product p1=userService.findProductById((long) 27);
+    	Product p2=userService.findProductById((long) 25);
+    	Product p3=userService.findProductById((long) 10);
+    	model.addAttribute("q1",p1.getAvailableQuantity());
+    	model.addAttribute("q2",p2.getAvailableQuantity());
+    	model.addAttribute("q3",p3.getAvailableQuantity());
     	
-    	List<Product> categoryProducts=userService.qProducts(cat);
-    	model.addAttribute("qs", categoryProducts);
+
     	return "adminChart.jsp";
     }
     //cart route

@@ -74,7 +74,7 @@
 							type="text" path="image" />
 					</label>
 					</div>
-					<div class="row">
+					<div class="row"style="margin-left:1px" >
 						<label>Select Category</label>
 						<select class="form-select" aria-label="Default select example" name="cat">
 							<c:forEach items="${categories}" var="category">

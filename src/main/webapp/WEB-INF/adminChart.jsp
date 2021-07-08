@@ -46,7 +46,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
         <div class="container" >
-        <h1 class="jumbotron-heading"> Chart for Category <c:out value="${q.name}"/></h1>
+        <h1 class="jumbotron-heading"> Chart for a selected products with their available quantity</h1>
    
         </div>
 			
@@ -80,8 +80,8 @@
 
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-				[ 'product', 'Sales' ], [ 'beds', 200],
-				[ 'tables', 400 ], [ 'tables', 650 ] ]);
+				[ 'product', 'Sales' ], [ 'Solid Wood Dining Table', ${q1}],
+				[ 'Dining Table', ${q2} ], [ 'Appleby Tufted Upholstered Low Profile Platform Bed', ${q3} ] ]);
 
 		var options = {
 			title : 'Company Performance',

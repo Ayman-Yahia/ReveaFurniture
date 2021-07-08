@@ -144,7 +144,7 @@
       <c:forEach items="${carts}" var="cart">
     	<div class="row p-3 effects">
         <div class="col-md-3">
-                        <img class="card-img img-fluid" src="${cart.product.image}" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="${cart.product.image}" alt="Card image cap" id="product-detail" >
         </div>
         <div class="col-md-3">
           <h3 class="text-info">Quantity: </h3>
