@@ -16,13 +16,17 @@ Thus the online furniture shopping project brings an entire furniture shop onlin
   <h3>Main Features:</h3>
 <b>Log in & Registration( /registration)</b>
 This page will enable us for login to the user account if he is already registered in the site before or to register if he is new user. It will contain filling for some of the personal information for the user such as first & last name, email & password.<br><br>
-  ![Alt text](https://github.com/Ayman-Yahia/ReveaFurniture/blob/master/src/main/resources/static/images/homepag.PNG)
-  ![](images/logreg.png)
+  ![Alt text](https://www.linkpicture.com/q/screencapture-localhost-8080-login-2021-07-10-14_02_40.png)
+  ![Alt text](https://www.linkpicture.com/q/screencapture-localhost-8080-login-2021-07-10-14_02_59.png)
+
 
   <b>The main page( /home)</b>
 will display all Furniture categories, each category will lead you to a page with a list of all books with the same category.<br><br>
+[![image](https://www.linkpicture.com/q/screencapture-localhost-8080-2021-07-10-13_59_15.png)](https://www.linkpicture.com/view.php?img=LPic60e99e2894f46841632124)
   
   <b>Ctegory Page( /categories/{category_id})</b>
+  [![image](https://www.linkpicture.com/q/catPage.png)](https://www.linkpicture.com/view.php?img=LPic60e99e2894f46841632124)
+  
    display the products of each category and the product can be added to the basket (if the user is logged in) and also access to the product page.<br><br>
   
   <b>Product Page( /products/{product_id})</b>
@@ -32,27 +36,33 @@ will display all Furniture categories, each category will lead you to a page wit
   Displays the products and their details that the customer has added to the cart, in addition to the total prices and the checkout button.<br><br>
   
   <b>Checkout Page( /checkout)</b>
+  [![image](https://www.linkpicture.com/q/screencapture-localhost-8080-checkout-2021-07-10-14_09_46.png)](https://www.linkpicture.com/view.php?img=LPic60e99e2894f46841632124)
   contains a form with information that the customer enters, such as name, address, email and  phone number.<br><br>
   
   <b>Thank You Page( /thankyou)</b>
+  ![Alt text](https://www.linkpicture.com/q/screencapture-localhost-8080-thankyou-2021-07-10-16_06_17.png)
+
   Thank the user and confirm that his request has been received.<br><br>
   
   <b>Admin Page(/admin)</b>
+  [![image](https://www.linkpicture.com/q/addProduct.png)](https://www.linkpicture.com/view.php?img=LPic60e99e2894f46841632124)
   Only this admin can access it. This page displays the products on the site and their details, and also enables the admin to delete or modify the products. <br><br>
   
   <b>Users Page ( /admin/users) </b>
-  Show all users of the site ز<br><br>
+  Show all users of the site <br><br>
   
   <b>Add Product Page ( /admin/add)</b>
+  [![image](https://www.linkpicture.com/q/Capture_104.png)](https://www.linkpicture.com/view.php?img=LPic60e99e2894f46841632124)
   Through this page, the admin can add products to the store.<br><br> 
   
   <b>Add Category Page ( /admin/addcategory)</b>
+  [![image](https://www.linkpicture.com/q/addCat.png)](https://www.linkpicture.com/view.php?img=LPic60e99e2894f46841632124)
   Through this page, the admin can add categories to the store.<br><br> 
   
-  <b>Add Category Page ( /admin/addcategory)</b>
-  Through this page, the admin can add categories to the store.<br><br> 
+
   
   <b>Chart Page( /admin/charts)</b>
+  [![image](https://www.linkpicture.com/q/chart_3.png)](https://www.linkpicture.com/view.php?img=LPic60e99e2894f46841632124)
   Displays visual reports such as sales of each category.<br><br>  
   
 Authors:<br>
